@@ -1,5 +1,5 @@
 <?php
-class Admin extends User
+class Recuteur extends User
 {
 
     public function __construct()
