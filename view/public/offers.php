@@ -1,5 +1,27 @@
   <!DOCTYPE html>
-  <html lang="fr">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLink - Plateforme de Recrutement</title>
+    <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
+    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CareerLink</div>
+            <ul class="nav-links">
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
+           
+            </ul>
+            <a href="logaut" class="btn-primary">deconnexion</a>
+        </div>
+    </nav>
+    
 
   <head>
       <meta charset="UTF-8">
