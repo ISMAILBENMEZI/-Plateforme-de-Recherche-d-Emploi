@@ -1,28 +1,29 @@
 <?php
-namespace App\controller;
+namespace App\Controller;
+
 use App\Services\CategoryServices;
 use PDOException;
-use PDO;
-class AdminController{
 
-public function chekCategoryInput(){
-    try{
-        if(isset($_POST["submit-categoryName"])&&!empty($_POST["categoryName"])){
-         $categoryServices=new CategoryServices();
-         $categoryServices->CreatCategory();
-       
-       
+class AdminController
+{
+    public function checkCategoryInput()
+    {
+        try {
+            if (!empty($_POST['categoryName'])) {
+                $categoryName = $_POST['categoryName'];
+                $categoryServices = new CategoryServices();
+                $categoryServices->CreatCategory($categoryName);
+            }
+        } catch (PDOException $e) {
+            echo "Failed to check category: " . $e->getMessage();
         }
     }
-    catch(PDOException $e){
-        echo "Failed to chek".$e->getMessage();
+
+    public function displayCategories()
+    {
+        $categoryServices = new CategoryServices();
+        $categories = $categoryServices->getAll();
+
+        include 'view/public/categories.php';
     }
-}
-public function desplayCategories(){
-    $categoryes=new CategoryServices();
-        $categories = $categoryes->display();
-        require_once("../../view/public/categories.php");
-      
-        
-}
 }

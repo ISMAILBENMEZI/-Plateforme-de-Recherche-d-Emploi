@@ -1,6 +1,7 @@
 <?php 
 require_once "vendor/autoload.php";
-use App\controller\AdminController;
+use App\Controller\AdminController;
 $admin=new AdminController();
-$admin->chekCategoryInput();
-$admin->desplayCategories();
+$admin->checkCategoryInput();
+$admin->displayCategories();
+

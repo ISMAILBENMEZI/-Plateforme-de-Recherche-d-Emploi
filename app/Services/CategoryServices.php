@@ -8,9 +8,9 @@ class CategoryServices{
     public function __construct(){
      $this->AdminRepository=new AdminRepository();
     }
-    public function CreatCategory(){
+    public function CreatCategory($CategoryName){
         try{
-        $CategoryName=$_POST["categoryName"];
+       
         $Category=new Category($CategoryName);
         $this->AdminRepository->AddCategory($Category);
         }
@@ -18,7 +18,7 @@ class CategoryServices{
             echo "failed to creat a category".$e->getMessage();
         }
     }
-    public function display(){
+    public function getAll(){
         $categoryes=new AdminRepository();
         $category=$categoryes->displayAllCatgorys();
         return $category;

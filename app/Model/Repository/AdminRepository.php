@@ -18,7 +18,7 @@ class AdminRepository
         try {
             $query = 'INSERT INTO categories(name)VALUES(:name)';
             $stmt = $this->connection->prepare($query);
-            $stmt->bindParam(":name", $category->name);
+            $stmt->bindValue(":name", $category->name);
             $stmt->execute();
             return $category;
 
@@ -34,8 +34,8 @@ class AdminRepository
         try {
             $query = 'INSERT INTO tags(name,category_id)VALUES(:name,:category_id)';
             $stmt = $this->connection->prepare($query);
-            $stmt->bindParam(":name", $tags->name);
-            $stmt->bindParam(":category_id", $tags->category_id);
+            $stmt->bindValue(":name", $tags->name);
+            $stmt->bindValue(":category_id", $tags->category_id);
 
             $stmt->execute();
             $this->connection->lastInsertId();
