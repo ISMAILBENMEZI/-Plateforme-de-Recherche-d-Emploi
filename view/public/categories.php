@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareerLink - Plateforme de Recrutement</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public_assets/CSS/style.css">
     
 </head>
 <body>
@@ -28,32 +28,33 @@
             <div class="category-card">
                 <div class="category-icon">💻</div>
                 <h3 class="category-name">Technologie</h3>
-                <p class="category-count">247 offres</p>
             </div>
             <div class="category-card">
                 <div class="category-icon">📊</div>
                 <h3 class="category-name">Marketing</h3>
-                <p class="category-count">183 offres</p>
             </div>
             <div class="category-card">
                 <div class="category-icon">💰</div>
                 <h3 class="category-name">Finance</h3>
-                <p class="category-count">156 offres</p>
             </div>
             <div class="category-card">
                 <div class="category-icon">🎨</div>
                 <h3 class="category-name">Design</h3>
-                <p class="category-count">92 offres</p>
             </div>
             <div class="category-card">
                 <div class="category-icon">🏗️</div>
                 <h3 class="category-name">Ingénierie</h3>
-                <p class="category-count">134 offres</p>
             </div>
             <div class="category-card">
                 <div class="category-icon">👥</div>
                 <h3 class="category-name">Ressources Humaines</h3>
-                <p class="category-count">78 offres</p>
+                
             </div>
+
+             <!-- <div class=".category-add">
+                <div class="category-icon">➕</div>
+                <h3 class="category-name">Add Catégorie</h3>
+                
+            </div> -->
         </div>
         </section>

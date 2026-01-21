@@ -310,6 +310,25 @@
             border-color: var(--accent);
         }
 
+        /* category-card to add a category*/
+       
+
+        .category-add {
+            background:rgb(121, 120, 120);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .category-add:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        /*  */
+
         .category-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
