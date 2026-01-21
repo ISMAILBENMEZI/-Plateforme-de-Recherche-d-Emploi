@@ -1,12 +1,13 @@
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use App\Core\Router;
-use App\Core\Session;
 
-// Session::start();
 $router = new Router();
+
+$router->addPath('recruteur',['OfferController','recruteur']);
+$router->addPath('creatOffer',['OfferController','creatOffer']);
+$router->addPath('createNewOffer',['OfferController','createNewOffer']);
 $router->addPath('home',['AuthController','home']);
 $router->addPath('login',['AuthController','login']);
 $router->addPath('register',['AuthController','register']);

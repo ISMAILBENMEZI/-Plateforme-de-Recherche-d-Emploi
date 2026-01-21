@@ -5,6 +5,7 @@ namespace App\Core;
 class Router
 {
     private $routes = [];
+
     public function run()
     {
         $request = $_SERVER['REQUEST_URI'];

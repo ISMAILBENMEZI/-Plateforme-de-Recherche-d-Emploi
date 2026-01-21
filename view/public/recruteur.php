@@ -1,27 +1,5 @@
   <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerLink - Plateforme de Recrutement</title>
-    <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
-    
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">CareerLink</div>
-            <ul class="nav-links">
-                <li><a href="Home">Accueil</a></li>
-                <li><a href="offers">Offres</a></li>
-                <li><a href="categories">Catégories</a></li>
-           
-            </ul>
-            <a href="logaut" class="btn-primary">deconnexion</a>
-        </div>
-    </nav>
-    
+  <html lang="fr">
 
   <head>
       <meta charset="UTF-8">
@@ -41,40 +19,16 @@
                   <li><a href="categories">Catégories</a></li>
                   <li><a href="#about">À propos</a></li>
               </ul>
-              <a href="#login" class="btn-primary">Connexion</a>
           </div>
       </nav>
-
-      <section class="search-section">
-          <div class="search-container">
-              <div class="search-bar">
-                  <input type="text" placeholder="Rechercher un poste, une entreprise...">
-                  <button class="btn-primary">Rechercher</button>
-              </div>
-              <div class="filters">
-                  <select class="filter-select">
-                      <option>Toutes les catégories</option>
-                      <option>Technologie</option>
-                      <option>Marketing</option>
-                      <option>Finance</option>
-                  </select>
-                  <select class="filter-select">
-                      <option>Localisation</option>
-                      <option>Casablanca</option>
-                      <option>Rabat</option>
-                      <option>Marrakech</option>
-                  </select>
-                  <select class="filter-select">
-                      <option>Type de contrat</option>
-                      <option>CDI</option>
-                      <option>CDD</option>
-                      <option>Freelance</option>
-                  </select>
-              </div>
-          </div>
+      <section class="offers-header">
+          <a href="createNewOffer" class="btn-add-offer">
+              + Add New Offer
+          </a>
       </section>
+
       <section>
-          <h2 class="section-title">Dernières offres d'emploi</h2>
+          <h2 class="section-title">Mes offres d'emploi</h2>
           <div class="jobs-grid">
               <div class="job-card">
                   <div class="job-header">
@@ -168,7 +122,7 @@
                       <span class="tag">UI Design</span>
                   </div>
                   <div class="job-footer">
-                      <span class="salary">300 - 500 DH/j</span>
+                      <span class="salary">300 - 500 DH</span>
                       <button class="btn-apply">Postuler</button>
                   </div>
               </div>
@@ -225,4 +179,4 @@
       </section>
   </body>
 
-</html>
+  </html>
