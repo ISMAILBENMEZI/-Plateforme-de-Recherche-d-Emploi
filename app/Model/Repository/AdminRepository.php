@@ -18,8 +18,6 @@ class AdminRepository
             $stmt->bindParam(":name",$category->name);
             $stmt->execute();
             return $category;
-
-
         } catch (PDOException $e) {
             echo "Failed to add a skils" . $e->getMessage();
         }

@@ -1,6 +1,5 @@
 <?php
 namespace App\Core;
-
 use PDO;
 use PDOException;
 
@@ -37,3 +36,4 @@ class Database
         return $this->conn;
     }
 }
+
