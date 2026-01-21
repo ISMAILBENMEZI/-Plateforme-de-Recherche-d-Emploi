@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Model\Repository;
 use App\Model\Repository\OfferRepository;
+use App\Model\Entity\Offer;
 
 class OfferServices
 {
@@ -12,5 +12,11 @@ class OfferServices
     public function __construct()
     {
         $this->offerRepository = new OfferRepository();
+    }
+
+    public function creatOffer(Offer $offer)
+    {
+        $result = $this->offerRepository->addOffer($offer);
+        return $result;
     }
 }

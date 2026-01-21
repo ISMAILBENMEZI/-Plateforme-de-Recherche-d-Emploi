@@ -8,5 +8,6 @@ $router = new Router();
 $router->addPath('recruteur',['OfferController','recruteur']);
 $router->addPath('creatOffer',['OfferController','creatOffer']);
 $router->addPath('createNewOffer',['OfferController','createNewOffer']);
+$router->addPath('addOffer',['OfferController','addOffer']);
 
 $router->run();

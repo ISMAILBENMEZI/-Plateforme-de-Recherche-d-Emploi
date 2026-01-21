@@ -3,7 +3,7 @@
 
 <head>
     <title>Test Offer Form</title>
-    <link rel="stylesheet" href="../public_assets/CSS/addOffer.css">
+    <link rel="stylesheet" href="view/public_assets/CSS/addOffer.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
         <div id="skillsContainer"></div>
         <button type="submit">Create Offer</button>
     </form>
-    <script src="../public_assets/JS/addOffer.js"></script>
+    <script src="view/public_assets/JS/addOffer.js"></script>
 </body>
 
 </html>

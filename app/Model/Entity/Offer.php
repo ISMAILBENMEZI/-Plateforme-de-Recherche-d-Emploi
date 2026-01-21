@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Entity;
+
 use App\Model\Entity\Skill;
 
 class Offer
@@ -14,7 +15,7 @@ class Offer
     private $id;
     private $skills = [];
 
-    public function __construct($title, $job_name, $salary, $location, $deadline, $user_id, $skills ,$id = null)
+    public function __construct($title, $job_name, $salary, $location, $deadline, $user_id, $skills, $id = null)
     {
         $this->title = $title;
         $this->job_name = $job_name;
@@ -64,5 +65,10 @@ class Offer
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+       $this->id = $id;
     }
 }

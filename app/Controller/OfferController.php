@@ -25,19 +25,28 @@ class OfferController
         require 'view/public/addOffer.php';
     }
 
+    public function addOffer()
+    {
+        require 'view/public/addOffer.php';
+    }
+
     public function creatOffer()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = $_POST['title'];
-            $job_name = $_POST['job_name'];
-            $salary = $_POST['salary'];
-            $location = $_POST['location'];
-            $deadline = $_POST['deadline'];
-            $skills = $_POST['skills'];
-            $user_id = $_SESSION['user']->id;
+            $title = $_POST['title'] ?? '';
+            $job_name = $_POST['job_name'] ?? '';
+            $salary = $_POST['salary'] ?? '';
+            $location = $_POST['location'] ?? '';
+            $deadline = $_POST['deadline'] ?? '';
+            $skills = $_POST['skills'] ?? '';
+            $user_id = 1;
 
-            if (empty($title) || empty($job_name) || empty($salary) || empty($location) || empty($deadline) || empty($skills) || $user_id) {
-                $_SESSION['erorr'] = '?';
+            $skills = array_unique($skills);
+
+            if (empty($title) || empty($job_name) || empty($salary) || empty($location) || empty($deadline)  || empty($user_id) || empty($skills) || !is_array($skills)) {
+                $_SESSION['erorr'] = "Please fill in all fields.";
+                var_dump($_POST);
+                exit;
                 return;
             }
 
@@ -50,6 +59,8 @@ class OfferController
                 user_id: $user_id,
                 skills: $skills
             );
+
+            $result = $this->offerServices->creatOffer($offer);
         }
     }
 }
