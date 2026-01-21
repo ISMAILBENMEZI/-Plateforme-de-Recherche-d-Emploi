@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
         </div>
     </nav>
 
-     <section>
+    <section>
         <h2 class="section-title">Catégories populaires</h2>
         <div class="categories-grid">
             
@@ -44,6 +45,12 @@
             
               
         </div>
+<<<<<<< HEAD
         </section>
 </body>
+=======
+    </section>
+</body>
+
+>>>>>>> f628ea6e62118ce30782fcbaabf5b6814bff546b
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 namespace Model\Entity;
+
 class User {
     private $id ;
     private $name ;

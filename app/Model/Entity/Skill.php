@@ -1,5 +1,8 @@
 <?php
-class Skills{
+
+namespace App\Model\Entity;
+
+class Skill{
     private $id;
     private $job;
     private $skills=[];
