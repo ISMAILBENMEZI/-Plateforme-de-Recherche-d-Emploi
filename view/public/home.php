@@ -13,10 +13,10 @@
         <div class="nav-container">
             <div class="logo">CareerLink</div>
             <ul class="nav-links">
-                <li><a href="Home.html">Accueil</a></li>
-                <li><a href="offers.html">Offres</a></li>
-                <li><a href="categories.html">Catégories</a></li>
-                <li><a href="#about">À propos</a></li>
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
+               
             </ul>
             <a href="#login" class="btn-primary">Connexion</a>
         </div>
@@ -33,9 +33,7 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Latest Jobs -->
-    
-
+     <!-- Latest Jobs -->    
         <!-- Categories -->
         
 

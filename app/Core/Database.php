@@ -1,28 +1,39 @@
 <?php
 namespace App\Core;
-use \PDO;
-class Database{
 
-    private static $pdo=null;
+use PDO;
+use PDOException;
 
-    private function __construct(){ }
+class Database
+{
+    private static $instance = null;
+    private $conn;
+    private $host = 'localhost';
+    private $user = 'root';
+    private $db = 'CareerLink';
+    private $password = '';
 
-    public static function getconnection(){
-    if(self::$pdo ==null){
+    private function __construct()
+    {
         try {
-            $host="localhost";
-            $dbname="CareerLink";
-            $user="root";
-            $pwd="";
-            self::$pdo=new PDO("maysql:host=$host;dbname=$dbname;",$user,$pwd, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]); 
-        return self::$pdo;
-        } catch (\Throwable $th) {
-            //throw $th;
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $erorr) {
+            die("Database Connection Failed: " . $erorr->getMessage());
         }
-          
     }
-    return self::$pdo;
+
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new Database();
+        }
+
+        return self::$instance;
+    }
+
+    public function getConnection()
+    {
+        return $this->conn;
     }
 }
