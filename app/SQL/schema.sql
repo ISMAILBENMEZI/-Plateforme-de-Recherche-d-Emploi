@@ -7,12 +7,7 @@ CREATE TABLE roles (
     name VARCHAR(50)
 );
 
-INSERT INTO
-    roles (id, name)
-VALUES (1, 'admin'),
-    (2, 'recruteur'),
-    (3, 'candidat');
-
+delete from roles;
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
@@ -61,3 +56,4 @@ CREATE TABLE postule (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (offer_id) REFERENCES offers (id)
 );
+SELECT * FROM  users u JOIN roles r on u.role_id=r.id;

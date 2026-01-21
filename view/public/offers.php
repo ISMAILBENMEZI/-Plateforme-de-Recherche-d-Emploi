@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareerLink - Plateforme de Recrutement</title>
-    <link rel="stylesheet" href="../public_assets/CSS/style.css">
+    <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
     
 </head>
 <body>
@@ -18,7 +18,7 @@
                 <li><a href="categories">Catégories</a></li>
            
             </ul>
-            <a href="#login" class="btn-primary">Connexion</a>
+            <a href="logaut" class="btn-primary">deconnexion</a>
         </div>
     </nav>
     

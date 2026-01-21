@@ -1,16 +1,17 @@
 <?php
 namespace Model\Entity;
+
 class Role {
     private $id;
     private $nameRole;
 
-    public function _construct($nameRole){
+    public function __construct($nameRole){
         $this->nameRole=$nameRole;
     }
     public function setId($id){
           $this->id=$id;
     }
-    public function getNameRole(){
+    public function getName(){
         return $this->nameRole;
     }
     public function getId(){
