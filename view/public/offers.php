@@ -13,9 +13,9 @@
         <div class="nav-container">
             <div class="logo">CareerLink</div>
             <ul class="nav-links">
-                <li><a href="Home.html">Accueil</a></li>
-                <li><a href="offers.html">Offres</a></li>
-                <li><a href="categories.html">Catégories</a></li>
+                <li><a href="Home.php">Accueil</a></li>
+                <li><a href="offers.php">Offres</a></li>
+                <li><a href="categories.php">Catégories</a></li>
                 <li><a href="#about">À propos</a></li>
             </ul>
             <a href="#login" class="btn-primary">Connexion</a>
