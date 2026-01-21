@@ -3,7 +3,6 @@ namespace App\controller;
 use App\Services\CategoryServices;
 use PDOException;
 use PDO;
-  use App\Model\Repository\AdminRepository;
 class AdminController{
 
 public function chekCategoryInput(){
