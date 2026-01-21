@@ -32,7 +32,7 @@ class Router
             if (!method_exists($controller, $method)) {
                 die('Action not found');
             }
-            $controller->$method;
+            $controller->$method();
         }else {
             http_response_code(404);
             echo "this file not found";

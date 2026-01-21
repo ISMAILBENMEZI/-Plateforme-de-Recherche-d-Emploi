@@ -8,7 +8,7 @@ class Skills{
         $this->job=$job;
         $this->skills=$skills;
     }
-    public function setId(){
+    public function setId($id){
         $this->id;
     }
     public function __get($name){

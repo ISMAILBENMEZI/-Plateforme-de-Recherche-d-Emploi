@@ -85,11 +85,11 @@
 <div class="card">
     
 
-    <form action="index.php" method="POST">
+    <form action="../../index.php" method="POST">
     <label for="name">Name of category</label>
-    <input type="text" id="name" placeholder="Enter your name">
+    <input type="text" id="name" name="categoryName" placeholder="Enter your name">
 
-    <input type="submit" value="Submit" id="button-sbt">
+    <input type="submit" value="Submit" id="button-sbt" name="submit-categoryName">
     </form>
 </div>
 
