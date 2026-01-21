@@ -1,11 +1,11 @@
 <?php
 
-namespace Database;
+namespace App\Core;
 
 use PDO;
 use PDOException;
 
-class DatabaseConnection
+class Database
 {
     private static $instance = null;
     private $conn;
@@ -27,7 +27,7 @@ class DatabaseConnection
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = new DatabaseConnection();
+            self::$instance = new Database();
         }
 
         return self::$instance;

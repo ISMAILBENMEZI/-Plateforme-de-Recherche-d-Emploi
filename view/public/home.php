@@ -8,38 +8,26 @@
     
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">CareerLink</div>
             <ul class="nav-links">
-                <li><a href="Home.html">Accueil</a></li>
-                <li><a href="offers.html">Offres</a></li>
-                <li><a href="categories.html">Catégories</a></li>
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
                 <li><a href="#about">À propos</a></li>
             </ul>
             <a href="#login" class="btn-primary">Connexion</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Trouvez votre prochain emploi</h1>
         <p>Des milliers d'opportunités vous attendent sur CareerLink</p>
-    </section>
+    </section>    
 
-    <!-- Search Section -->
-    
-
-    <!-- Main Content -->
     <div class="container">
-        <!-- Latest Jobs -->
     
-
-        <!-- Categories -->
-        
-
-        <!-- Stats (Admin Dashboard) -->
         <h2 class="section-title">Statistiques</h2>
         <div class="stats-grid">
             <div class="stat-card">
