@@ -20,5 +20,6 @@ $router->addPath('login', ['AuthController', 'login']);
 $router->addPath('register', ['AuthController', 'register']);
 $router->addPath('derLogin', ['AuthController', 'derLogin']);
 $router->addPath('derregister', ['AuthController', 'derregister']);
-$router->addPath('logaut', ['AuthController', 'logaut']);
+$router->addPath('logout', ['AuthController', 'logaut']);
+$router->addPath('candidat', ['CondidatController', 'candidat']);
 $router->run();
