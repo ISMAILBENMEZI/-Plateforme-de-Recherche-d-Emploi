@@ -6,6 +6,7 @@ use App\Core\Database;
 use App\Model\Entity\Offer;
 use PDOException;
 use RuntimeException;
+use PDO;
 
 class OfferRepository
 {
@@ -65,19 +66,82 @@ class OfferRepository
 
     public function deleteOffer(Offer $offer)
     {
+        try {
+            $query = 'DELETE FROM offers WHERE id = :offer_id AND user_id = :user_id';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ":offer_id" => $offer->getId(),
+                ":user_id" => $offer->getUserId()
+            ]);
 
-        $query = 'DELETE FROM offers WHERE id = :offer_id AND user_id = :user_id';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            ":offer_id" => $offer->getId(),
-            ":user_id" => $offer->getUserId()
-        ]);
+            $query = 'DELETE FROM offer_tag WHERE offer_id = :offer_id';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ":offer_id" => $offer->getId()
+            ]);
+            return true;
+        } catch (PDOException $error) {
+            throw new RuntimeException("Database error. Please try again later.");
+        }
+    }
 
-        $query = 'DELETE FROM offer_tag WHERE offer_id = :offer_id';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            ":offer_id" => $offer->getId()
-        ]);
-        return true;
+    public function getOfferBuId(Offer $offer)
+    {
+        try {
+            $query = '
+                SELECT 
+                    o.id AS offer_id,
+                    o.title,
+                    o.job_name,
+                    o.salary,
+                    o.location,
+                    o.application_deadline,
+                    t.id AS tag_id,
+                    t.name AS tag_name,
+                    GROUP_CONCAT(t.name SEPARATOR ",") as tags
+                    FROM offers o
+                    LEFT JOIN offer_tag ot ON o.id = ot.offer_id
+                    LEFT JOIN tags t ON ot.tag_id = t.id
+                    WHERE o.id = :offer_id AND o.user_id = :user_id
+                    GROUP BY o.id;
+                ';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                "offer_id"=>$offer->getId(),
+                ":user_id"=>$offer->getUserId()
+            ]);
+            $result = $stmt->fetch(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $error) {
+            throw new RuntimeException("Database error. Please try again later.");
+        }
+    }
+
+    public function getAllOffer()
+    {
+        try {
+            $query = '
+                SELECT 
+                    o.id AS offer_id,
+                    o.title,
+                    o.job_name,
+                    o.salary,
+                    o.location,
+                    o.application_deadline,
+                    t.id AS tag_id,
+                    t.name AS tag_name,
+                    GROUP_CONCAT(t.name SEPARATOR ",") as tags
+                    FROM offers o
+                    LEFT JOIN offer_tag ot ON o.id = ot.offer_id
+                    LEFT JOIN tags t ON ot.tag_id = t.id
+                    GROUP BY o.id;
+                ';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $error) {
+            throw new RuntimeException("Database error. Please try again later.");
+        }
     }
 }

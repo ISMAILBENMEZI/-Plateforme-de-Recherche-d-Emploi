@@ -9,17 +9,19 @@
   </head>
 
   <body>
-      <nav>
-          <div class="nav-container">
-              <div class="logo">CareerLink</div>
-              <ul class="nav-links">
-                  <li><a href="Home">Accueil</a></li>
-                  <li><a href="offers">Offres</a></li>
-                  <li><a href="categories">Catégories</a></li>
-                  <li><a href="#about">À propos</a></li>
-              </ul>
-          </div>
-      </nav>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CareerLink</div>
+            <ul class="nav-links">
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
+           
+            </ul>
+            <a href="logaut" class="btn-primary">deconnexion</a>
+        </div>
+    </nav>
+    
       <section class="offers-header">
           <a href="createNewOffer" class="btn-add-offer">
               + Add New Offer
@@ -35,7 +37,7 @@
                       <button type="button" class="menu-btn">⋮</button>
 
                       <div class="menu-dropdown">
-                          <form action="updateOffer" method="POST">
+                          <form action="goToUpdateOffer" method="POST">
                               <input type="hidden" name="offer_id" value="18">
                               <input type="hidden" name="user_id" value="1">
                               <button type="submit" class="menu-item update">Update</button>
@@ -51,7 +53,6 @@
                           </form>
                       </div>
                   </div>
-
 
                   <div class="job-header">
                       <div>

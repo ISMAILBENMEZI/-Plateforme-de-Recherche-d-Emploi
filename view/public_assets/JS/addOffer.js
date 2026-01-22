@@ -15,13 +15,8 @@ skillSelect.addEventListener('change', function () {
     input.value = skillId;
 
     const tag = document.createElement('span');
+    tag.classList.add('addNewTags')
     tag.textContent = skillName + ' × ';
-    tag.style.margin = '5px';
-    tag.style.background = '#121633';
-    tag.style.color = 'white';
-    tag.style.padding = '5px';
-    tag.style.borderRadius = '10px';
-    tag.style.cursor = 'pointer';
 
     tag.onclick = () => {
         input.remove();

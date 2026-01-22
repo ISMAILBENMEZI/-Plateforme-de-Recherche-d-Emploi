@@ -25,6 +25,12 @@ class OfferController
         require 'view/public/addOffer.php';
     }
 
+    public function goToUpdateOffer()
+    {
+        $offer = $this->getOfferBuId();
+        require 'view/public/addOffer.php';
+    }
+
     public function addOffer()
     {
         require 'view/public/addOffer.php';
@@ -71,7 +77,42 @@ class OfferController
         }
     }
 
-    public function updateOffer() {}
+    public function getAllOffer()
+    {
+        return $this->offerServices->getAllOffer();
+    }
+
+    public function getOfferBuId()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user_id = $_POST['user_id'];
+            $offer_id = $_POST['offer_id'];
+
+            if (empty($user_id) || empty($offer_id)) {
+                $_SESSION['error'] = 'error!!Please try again later.';
+                return;
+            }
+
+            $offer = new offer(
+                title: null,
+                job_name: null,
+                salary: null,
+                location: null,
+                deadline: null,
+                user_id: 1,
+                skills: null,
+                id: 1
+            );
+
+            return $this->offerServices->getOfferBuId($offer);
+        }
+    }
+
+    // public function updateOffer()
+    // {
+
+    // }
 
     public function deleteOffer()
     {

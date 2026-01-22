@@ -13,7 +13,7 @@
     <form method="POST" action="creatOffer">
 
         <label for="Title">Title:</label>
-        <input type="text" name="title" id="Title" value="" required>
+        <input type="text" name="title" id="Title" value="<?= $offer->title ?? ''?>" required>
 
         <label for="job_name">Job Name:</label>
         <select name="job_name" id="job_name" required>
@@ -24,16 +24,15 @@
         </select>
 
         <label for="salary">Salary:</label>
-        <input type="number" name="salary" id="salary" value="5000" required>
+        <input type="number" name="salary" id="salary" value="<?= $offer->salary  ?? ''?>" required>
 
         <label for="location">Location:</label>
-        <input type="text" name="location" id="location" value="Casablanca" required>
+        <input type="text" name="location" id="location" value="<?= $offer->location  ?? ''?>" required>
 
         <label for="deadline">Deadline:</label>
-        <input type="date" name="deadline" id="deadline" value="2026-02-01" required>
+        <input type="date" name="deadline" id="deadline" value="<?= $offer->application_deadline  ?? ''?>" required>
 
         <label for="skillSelect">Skills:</label>
-
         <select id="skillSelect">
             <option value="">Select skill</option>
             <option value="1">PHP</option>

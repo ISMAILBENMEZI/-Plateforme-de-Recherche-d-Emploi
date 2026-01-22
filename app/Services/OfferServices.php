@@ -25,4 +25,16 @@ class OfferServices
         $result = $this->offerRepository->deleteOffer($offer);
         return $result;
     }
+
+    public function getAllOffer()
+    {
+        $result = $this->offerRepository->getAllOffer();
+        return $result;
+    }
+
+    public function getOfferBuId(Offer $offer)
+    {
+        $result = $this->offerRepository->getOfferBuId($offer);
+        return $result;
+    }
 }
