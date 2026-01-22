@@ -16,7 +16,12 @@ class AuthServices
         $res = $auth->findByEmail($user);
        
         if ($res && password_verify($user->getPassword() , $res->getPassword())) {
+            Session::set('User_id', $res->getId());
+            Session::set('User_name', $res->getName());
+            Session::set('User_email', $res->getEmail());
+            Session::set('User_role', $res->getRole());
             return $res;
+
         }
         return false;
     }

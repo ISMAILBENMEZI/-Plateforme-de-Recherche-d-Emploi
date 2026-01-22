@@ -5,22 +5,24 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>CareerLink - Plateforme de Recrutement</title>
-      <link rel="stylesheet" href="../public_assets/CSS/style.css">
+      <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
 
   </head>
 
   <body>
-      <nav>
-          <div class="nav-container">
-              <div class="logo">CareerLink</div>
-              <ul class="nav-links">
-                  <li><a href="Home">Accueil</a></li>
-                  <li><a href="offers">Offres</a></li>
-                  <li><a href="categories">Catégories</a></li>
-                  <li><a href="#about">À propos</a></li>
-              </ul>
-          </div>
-      </nav>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CareerLink</div>
+            <ul class="nav-links">
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
+           
+            </ul>
+            <a href="logaut" class="btn-primary">deconnexion</a>
+        </div>
+    </nav>
+    
       <section class="offers-header">
           <a href="createNewOffer" class="btn-add-offer">
               + Add New Offer
