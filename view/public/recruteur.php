@@ -22,70 +22,61 @@
         </div>
     </nav>
 
-    <div class="dashboard-container">
-        <h1>Bienvenue, Recruteur !</h1>
+    <section>
+        <h2 class="section-title">Mes offres d'emploi</h2>
+        <div class="jobs-grid">
+            <div class="job-card">
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">15</div>
-                <div class="stat-label">Offres publiées</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">48</div>
-                <div class="stat-label">Candidatures reçues</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">5</div>
-                <div class="stat-label">Offres actives</div>
-            </div>
-        </div>
+                <div class="card-menu">
+                    <button type="button" class="menu-btn">⋮</button>
 
-        <section class="jobs-list">
-            <h2 class="section-title">Offres d'emploi récentes</h2>
+                    <div class="menu-dropdown">
+                        <form action="goToUpdateOffer" method="POST">
+                            <input type="hidden" name="offer_id" value="18">
+                            <input type="hidden" name="user_id" value="1">
+                            <button type="submit" class="menu-item update">Update</button>
+                        </form>
 
-            <div class="job-item">
-                <div class="job-info">
-                    <h3 class="job-title">Développeur Full Stack</h3>
-                    <p class="job-company">Tech Innovations SA • Casablanca</p>
-                    <div class="job-meta">
-                        <span>CDI</span>
-                        <span>Il y a 2 jours</span>
+                        <form action="deleteOffer" method="POST">
+                            <input type="hidden" name="offer_id" value="19">
+                            <input type="hidden" name="user_id" value="1">
+                            <button type="submit" class="menu-item delete"
+                                onclick="return confirm('Are you sure you want to delete this offer?')">
+                                Delete
+                            </button>
+                        </form>
                     </div>
                 </div>
-                <div class="job-actions">
-                    <a href="candidat" class="btn-primary"> Voir les candidats</a>
-                </div>
-            </div>
 
-            <div class="job-item">
-                <div class="job-info">
-                    <h3 class="job-title">Chef de Projet Digital</h3>
-                    <p class="job-company">Digital Marketing Pro • Rabat</p>
-                    <div class="job-meta">
-                        <span>Freelance</span>
-                        <span>Il y a 5 jours</span>
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Développeur Full Stack</h3>
+                        <p class="company-name">Tech Innovations SA</p>
+                    </div>
+                    <div class="company-logo">TI</div>
+                </div>
+                <div class="job-meta">
+                    <span class="meta-item">📍 Casablanca</span>
+                    <span class="meta-item">⏰ CDI</span>
+                    <span class="meta-item">🕐 Publié il y a 2h</span>
+                </div>
+                <div class="tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">Laravel</span>
+                    <span class="tag">React</span>
+                    <span class="tag">MySQL</span>
+                </div>
+                <div class="job-footer">
+                    <span class="salary">15 000 - 20 000 DH</span>
+                    <div class="job-actions">
+                        <a href="candidat" class="btn-primary"> Voir les candidats</a>
                     </div>
                 </div>
-                <div class="job-actions">
-                    <button name="candidat" class="btn-primary">Voir les candidats</button>
-                </div>
             </div>
+    </section>
 
-            <div class="job-item">
-                <div class="job-info">
-                    <h3 class="job-title">Analyste Financier</h3>
-                    <p class="job-company">Finance Corp • Casablanca</p>
-                    <div class="job-meta">
-                        <span>CDI</span>
-                        <span>Il y a 1 semaine</span>
-                    </div>
-                </div>
-                <div class="job-actions">
-                    <button class="btn-primary">Voir les candidats</button>
-                </div>
-            </div>
-        </section>
-    </div>
+    <script src="view/public_assets/JS/recruteur.js"></script>
+</body>
 
 </body>
 

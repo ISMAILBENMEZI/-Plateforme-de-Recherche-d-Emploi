@@ -3,14 +3,15 @@ require_once "vendor/autoload.php";
 use App\Controller\AdminController;
 use App\Core\Router;
 
-// $admin = new AdminController();
-
-// $admin->displayCategories();
-
-
-
 
 $router = new Router();
+
+$router->addPath('deleteOffer',['OfferController','deleteOffer']);
+$router->addPath('updateOffer',['OfferController','updateOffer']);
+$router->addPath('addOffer',['OfferController','addOffer']);
+$router->addPath('goToUpdateOffer',['OfferController','goToUpdateOffer']);
+
+
 $router->addPath('categories', ['AdminController', 'categories']);
 $router->addPath('addCategorie', ['AdminController', 'checkAndCreatCategory']);
 $router->addPath('recruteur', ['OfferController', 'recruteur']);

@@ -8,7 +8,6 @@
     
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">CareerLink</div>
