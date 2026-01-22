@@ -1,27 +1,12 @@
 <?php
 namespace App\Services;
-use App\Model\Repository\CategoryRepository;
-use App\Model\Entity\Category;
-use PDOException;
-class CategoryServices{ 
-    private $AdminRepository;
+use App\Repository\AdminRepository;
+class categoryServices{
+    private $Adminrepository;
     public function __construct(){
-     $this->AdminRepository=new CategoryRepository();
+     $this->Adminrepository=new AdminRepository();
     }
-    public function CreatCategory($CategoryName){
-        try{
-       
-        $Category=new Category($CategoryName);
-        $this->AdminRepository->AddCategory($Category);
-        }
-        catch(PDOException $e){
-            echo "failed to creat a category".$e->getMessage();
-        }
+    public function CreatCategory(){
+        $CategoryName=$_POST
     }
-    public function getAll(){
-        $categoryes=new CategoryRepository();
-        $category=$categoryes->displayAllCatgorys();
-        return $category;
-    }
-
 }

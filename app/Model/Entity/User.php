@@ -1,42 +1,31 @@
 <?php
+class User{
+    private $id;
+    private $nom;
+    private $email;
+    private $password;
 
-namespace Model\Entity;
+    public function __construct(){
+        $this->id;
+        $this->email;
+        $this->nom;
+         $this->password;
+    }
 
-class User {
-    private $id ;
-    private $name ;
-    private $email ;
-    private $password ;
-    private $role ;
+    public function setId(){
+        $this->id;
+    }
+    public function setnom(){
+        $this->nom;
+    }
 
-    public function __construct($email,$password){
-        $this->email=$email;
-        $this->password=$password;
+public function setemail(){
+        $this->email;
     }
-    public function setId($id){
-     $this->id=$id;   
+    public function setpassword(){
+        $this->password;
     }
-    public function setName($name){
-     $this->name=$name;   
+    public function __get($name){
+        return $this->$name;
     }
-    public function setRole($role){
-     $this->role=$role;   
-    }
-    public function getId(){
-        return $this->id;
-    }
-    public function getName(){
-        return $this->name;
-    }
-    public function getEmail(){
-        return $this->email;
-    }
-    public function getPassword(){
-        return $this->password;
-    }
-    public function getRole(){
-        return $this->role;
-    }
-  
 }
-

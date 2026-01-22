@@ -1,8 +1,5 @@
 <?php
-
-namespace App\Model\Entity;
-
-class Skill{
+class Skills{
     private $id;
     private $job;
     private $skills=[];
@@ -11,7 +8,7 @@ class Skill{
         $this->job=$job;
         $this->skills=$skills;
     }
-    public function setId($id){
+    public function setId(){
         $this->id;
     }
     public function __get($name){

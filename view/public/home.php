@@ -2,74 +2,61 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>CareerLink - Accueil</title>
-
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="view/public_assets/CSS/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLink - Plateforme de Recrutement</title>
+    <link rel="stylesheet" href="../public_assets/CSS/style.css">
+    
 </head>
 <body>
-
-<!-- Navigation -->
-<nav>
-    <div class="nav-container">
-        <div class="logo">CareerLink</div>
-
-        <ul class="nav-links">
-            <li><a href="home">Accueil</a></li>
-            <li><a href="offers">Offres</a></li>
-            <li><a href="Categories">Catégories</a></li>
-        </ul>
-
-        <a href="derLogin" class="btn-primary">Connexion</a>
-    </div>
-</nav>
-
-<!-- Hero Section -->
-<section class="hero">
-    <h1>Trouvez votre prochain emploi</h1>
-    <p>Des milliers d'opportunités professionnelles vous attendent</p>
-    <a href="#" class="btn-primary">Voir les offres</a>
-</section>
-
-<!-- Search Section -->
-<section class="search-section">
-    <div class="search-container">
-
-        <div class="search-bar">
-            <input type="text" placeholder="Poste, mot-clé...">
-            <input type="text" placeholder="Ville, région...">
-            <button class="btn-primary">Rechercher</button>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CareerLink</div>
+            <ul class="nav-links">
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+                <li><a href="categories">Catégories</a></li>
+               
+            </ul>
+            <a href="#login" class="btn-primary">Connexion</a>
         </div>
+    </nav>
 
-        <div class="filters">
-            <select class="filter-select">
-                <option>Type de contrat</option>
-                <option>CDI</option>
-                <option>CDD</option>
-                <option>Stage</option>
-            </select>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Trouvez votre prochain emploi</h1>
+        <p>Des milliers d'opportunités vous attendent sur CareerLink</p>
+    </section>
 
-            <select class="filter-select">
-                <option>Niveau</option>
-                <option>Débutant</option>
-                <option>Confirmé</option>
-                <option>Senior</option>
-            </select>
+    <!-- Search Section -->
+    
+
+    <!-- Main Content -->
+    <div class="container">
+     <!-- Latest Jobs -->    
+        <!-- Categories -->
+        
+
+        <!-- Stats (Admin Dashboard) -->
+        <h2 class="section-title">Statistiques</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">890</div>
+                <div class="stat-label">Offres actives</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Recruteurs actifs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2.4K</div>
+                <div class="stat-label">Candidatures ce mois</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">67%</div>
+                <div class="stat-label">Taux de réponse</div>
+            </div>
         </div>
-
     </div>
-</section>
-
-<!-- Dernières Offres -->
-
-
-<!-- Categories -->
-
-
-<!-- Footer -->
-<footer>
-    © 2026 CareerLink — Plateforme de recrutement moderne
-</footer>
-
 </body>
 </html>
