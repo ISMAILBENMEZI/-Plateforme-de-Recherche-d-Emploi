@@ -13,6 +13,7 @@ class Router
         $url = str_replace($script_name, '', $request);
         $url = parse_url($url, PHP_URL_PATH);
         $url = trim($url, '/');
+
         if($url==''){
            $url='home';
         }
