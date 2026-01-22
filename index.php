@@ -3,9 +3,9 @@ require_once "vendor/autoload.php";
 use App\Controller\AdminController;
 use App\Core\Router;
 
-$admin = new AdminController();
-$admin->checkCategoryInput();
-$admin->displayCategories();
+// $admin = new AdminController();
+// $admin->checkCategoryInput();
+// $admin->displayCategories();
 
 
 
@@ -20,4 +20,5 @@ $router->addPath('login', ['AuthController', 'login']);
 $router->addPath('register', ['AuthController', 'register']);
 $router->addPath('derLogin', ['AuthController', 'derLogin']);
 $router->addPath('derregister', ['AuthController', 'derregister']);
+$router->addPath('logaut', ['AuthController', 'logaut']);
 $router->run();
