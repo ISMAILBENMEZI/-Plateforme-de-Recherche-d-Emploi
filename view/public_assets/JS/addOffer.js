@@ -17,7 +17,7 @@ skillSelect.addEventListener('change', function () {
     const tag = document.createElement('span');
     tag.textContent = skillName + ' × ';
     tag.style.margin = '5px';
-    tag.style.background = '#4CAF50';
+    tag.style.background = '#121633';
     tag.style.color = 'white';
     tag.style.padding = '5px';
     tag.style.borderRadius = '10px';

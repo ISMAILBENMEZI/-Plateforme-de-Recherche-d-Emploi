@@ -5,8 +5,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>CareerLink - Plateforme de Recrutement</title>
-      <link rel="stylesheet" href="view/public_assets/CSS/style.css">
-
+      <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
   </head>
 
   <body>
@@ -31,6 +30,29 @@
           <h2 class="section-title">Mes offres d'emploi</h2>
           <div class="jobs-grid">
               <div class="job-card">
+
+                  <div class="card-menu">
+                      <button type="button" class="menu-btn">⋮</button>
+
+                      <div class="menu-dropdown">
+                          <form action="updateOffer" method="POST">
+                              <input type="hidden" name="offer_id" value="18">
+                              <input type="hidden" name="user_id" value="1">
+                              <button type="submit" class="menu-item update">Update</button>
+                          </form>
+
+                          <form action="deleteOffer" method="POST">
+                              <input type="hidden" name="offer_id" value="19">
+                              <input type="hidden" name="user_id" value="1">
+                              <button type="submit" class="menu-item delete"
+                                  onclick="return confirm('Are you sure you want to delete this offer?')">
+                                  Delete
+                              </button>
+                          </form>
+                      </div>
+                  </div>
+
+
                   <div class="job-header">
                       <div>
                           <h3 class="job-title">Développeur Full Stack</h3>
@@ -177,6 +199,7 @@
               </div>
           </div>
       </section>
+      <script src="view/public_assets/JS/recruteur.js"></script>
   </body>
 
   </html>

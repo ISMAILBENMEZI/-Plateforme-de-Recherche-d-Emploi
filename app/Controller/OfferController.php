@@ -61,6 +61,49 @@ class OfferController
             );
 
             $result = $this->offerServices->creatOffer($offer);
+            if ($result) {
+                $_SESSION['success'] = 'The offer has been created successfully.';
+                require 'view/public/recruteur.php';
+            } else {
+                $_SESSION['erorr'] = "Failed to create the offer. Please try again later.";
+                require 'view/public/addOffer.php';
+            }
+        }
+    }
+
+    public function updateOffer() {}
+
+    public function deleteOffer()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user_id = $_POST['user_id'];
+            $offer_id = $_POST['offer_id'];
+
+            if (empty($user_id) || empty($offer_id)) {
+                $_SESSION['error'] = 'error!!Please try again later.';
+                return;
+            }
+
+            $offer = new offer(
+                title: null,
+                job_name: null,
+                salary: null,
+                location: null,
+                deadline: null,
+                user_id: $user_id,
+                skills: null,
+                id: $offer_id
+            );
+
+            $result = $this->offerServices->deleteOffer($offer);
+            if ($result) {
+                $_SESSION['success'] = 'The offer has been created successfully.';
+                require 'view/public/recruteur.php';
+            } else {
+                $_SESSION['erorr'] = "Failed to delete the offer. Please try again later.";
+                require 'view/public/addOffer.php';
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ body {
   line-height: 1.6;
 }
 
-/* Navigation */
+
 nav {
   background: var(--bg-secondary);
   padding: 1rem 0;
@@ -81,7 +81,6 @@ nav {
   background: var(--accent-hover);
 }
 
-/* Hero Section */
 .hero {
   background: linear-gradient(135deg,
       var(--bg-secondary) 0%,
@@ -103,8 +102,6 @@ nav {
   color: var(--text-secondary);
   margin-bottom: 2rem;
 }
-
-/* Auth Pages */
 
 .auth-container {
   min-height: 80vh;
@@ -172,10 +169,10 @@ nav {
   text-decoration: underline;
 }
 
-/* ////////////////////// */
-.offers-header{
-  margin:20px;
+.offers-header {
+  margin: 20px;
 }
+
 .btn-add-offer {
   background: linear-gradient(135deg, #6c63ff, #5a54e6);
   color: #ffffff;
@@ -196,8 +193,6 @@ nav {
   box-shadow: 0 12px 30px rgba(108, 99, 255, 0.5);
 }
 
-/* ------------------- */
-/* Search Section */
 .search-section {
   max-width: 1400px;
   margin: -2rem auto 3rem;
@@ -246,7 +241,6 @@ nav {
   cursor: pointer;
 }
 
-/* Main Content */
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -269,7 +263,6 @@ nav {
   border-radius: 4px;
 }
 
-/* Job Cards Grid */
 .jobs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -383,7 +376,6 @@ nav {
   background: var(--accent-hover);
 }
 
-/* Categories Section */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -408,8 +400,6 @@ nav {
   border-color: var(--accent);
 }
 
-/* category-card to add a category*/
-
 .category-add {
   background: rgb(121, 120, 120);
   border: 1px solid var(--border);
@@ -427,7 +417,6 @@ nav {
   border-color: var(--accent);
 }
 
-/*  */
 
 .category-icon {
   font-size: 2.5rem;
@@ -444,7 +433,6 @@ nav {
   font-size: 0.9rem;
 }
 
-/* Stats Dashboard */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -471,7 +459,6 @@ nav {
   font-size: 0.95rem;
 }
 
-/* Job Detail Page */
 .job-detail {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -526,7 +513,6 @@ nav {
   border-bottom: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
@@ -544,4 +530,57 @@ nav {
   .search-bar {
     flex-direction: column;
   }
+}
+/* ------------------------- */
+
+.job-card {
+  position: relative;
+}
+
+.card-menu {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: var(--border);
+}
+
+.menu-item.delete {
+  color: red;
+}
+
+.menu-item.update{
+  color: white;
 }

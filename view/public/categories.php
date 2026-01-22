@@ -31,9 +31,7 @@
             </div>
             <div class="category-card">
                 <h3 class="category-name">category name</h3>
-            </div>
-            
-              
+            </div>  
         </div>
     </section>
 </body>

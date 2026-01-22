@@ -19,4 +19,10 @@ class OfferServices
         $result = $this->offerRepository->addOffer($offer);
         return $result;
     }
+
+    public function deleteOffer(Offer $offer)
+    {
+        $result = $this->offerRepository->deleteOffer($offer);
+        return $result;
+    }
 }
