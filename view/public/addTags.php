@@ -86,10 +86,10 @@
     
 
     <form action="../../index.php" method="POST">
-    <label for="name">Name of category</label>
-    <input type="text" id="name" name="categoryName" placeholder="Enter your name">
+    <label for="name">Name of Tag</label>
+    <input type="text" id="name" name="TagName" placeholder="Enter your name">
 
-    <input type="submit" value="Submit" id="button-sbt" name="submit-categoryName">
+    <input type="submit" value="Submit" id="button-sbt" name="submit-TagName">
     </form>
 </div>
 
