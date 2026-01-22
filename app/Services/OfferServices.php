@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Services;
-
 use App\Model\Repository\OfferRepository;
 use App\Model\Entity\Offer;
 

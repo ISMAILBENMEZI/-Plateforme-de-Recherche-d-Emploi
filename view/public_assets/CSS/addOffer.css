@@ -79,14 +79,10 @@ button:hover {
 }
 
 .addNewTags{
-        /* tag.style.margin = '5px';
-    tag.style.background = '#121633';
-    tag.style.color = 'white';
-    tag.style.padding = '5px';
-    tag.style.borderRadius = '10px';
-    tag.style.cursor = 'pointer'; */
-
     margin: 5px;
     background: #121633;
     color: white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
 }

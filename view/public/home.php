@@ -1,7 +1,11 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
     <title>CareerLink - Accueil</title>
 
     <!-- CSS principal -->
@@ -188,6 +192,7 @@
 <footer>
     © 2026 CareerLink — Plateforme de recrutement moderne
 </footer>
+>>>>>>> 98d8c5947ccf616397906072ebc9e27693730fed
 
 </body>
 </html>

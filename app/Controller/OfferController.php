@@ -28,6 +28,8 @@ class OfferController
     public function goToUpdateOffer()
     {
         $offer = $this->getOfferBuId();
+        var_dump($offer);
+        exit;
         require 'view/public/addOffer.php';
     }
 

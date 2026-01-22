@@ -25,14 +25,14 @@ CREATE TABLE
         FOREIGN KEY (role_id) REFERENCES roles (id)
     );
 
-CREATE TABLE
-    user_skills (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        job VARCHAR(255),
-        skills VARCHAR(255),
-        user_id INT,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-    );
+
+CREATE TABLE user_skills (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    skill_id INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
+);
 
 CREATE TABLE
     categories (
@@ -40,38 +40,36 @@ CREATE TABLE
         name VARCHAR(200)
     );
 
-CREATE TABLE
-    tags (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(50),
-        category_id INT,
-        FOREIGN KEY (category_id) REFERENCES categories (id)
-    );
+CREATE TABLE skills (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories (id)
+);
 
-CREATE TABLE
-    offers (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        title VARCHAR(255),
-        job_name VARCHAR(255),
-        salary VARCHAR(50),
-        location VARCHAR(100),
-        application_deadline DATE,
-        user_id INT,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-    );
+CREATE TABLE offers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    salary VARCHAR(50),
+    location VARCHAR(100),
+    description VARCHAR(255),
+    user_id INT,
+    category_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
 
-CREATE TABLE
-    postule (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        letter VARCHAR(255),
-        document MEDIUMBLOB NOT NULL,
-        user_id INT,
-        offer_id INT,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (offer_id) REFERENCES offers (id)
-    );
+CREATE TABLE postule (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    letter VARCHAR(255),
+    document MEDIUMBLOB NOT NULL,
+    user_id INT,
+    offer_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (offer_id) REFERENCES offers (id)
+);
 
-------------------------------------------
+
 CREATE TABLE
     offer_tag (
         offer_id INT NOT NULL,
@@ -81,6 +79,7 @@ CREATE TABLE
         FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
 
+<<<<<<< HEAD
 
 INSERT INTO offers (id, title, job_name, salary, location, application_deadline, user_id) VALUES
 (1, 'Backend Developer', 'PHP Developer', 8000, 'Casablanca', '2026-02-01', 1),
@@ -105,3 +104,5 @@ INSERT INTO offer_tag (offer_id, tag_id) VALUES
 (2, 5),
 
 (3, 6);
+=======
+>>>>>>> adad131347f4732407dd211a70336736ef71f7b9

@@ -13,7 +13,7 @@
     <form method="POST" action="creatOffer">
 
         <label for="Title">Title:</label>
-        <input type="text" name="title" id="Title" value="<?= $offer->title ?? ''?>" required>
+        <input type="text" name="title" id="Title" value="<?= $offer->title ?? '' ?>" required>
 
         <label for="job_name">Job Name:</label>
         <select name="job_name" id="job_name" required>
@@ -24,13 +24,13 @@
         </select>
 
         <label for="salary">Salary:</label>
-        <input type="number" name="salary" id="salary" value="<?= $offer->salary  ?? ''?>" required>
+        <input type="number" name="salary" id="salary" value="<?= $offer->salary  ?? '' ?>" required>
 
         <label for="location">Location:</label>
-        <input type="text" name="location" id="location" value="<?= $offer->location  ?? ''?>" required>
+        <input type="text" name="location" id="location" value="<?= $offer->location  ?? '' ?>" required>
 
         <label for="deadline">Deadline:</label>
-        <input type="date" name="deadline" id="deadline" value="<?= $offer->application_deadline  ?? ''?>" required>
+        <input type="date" name="deadline" id="deadline" value="<?= $offer->application_deadline  ?? '' ?>" required>
 
         <label for="skillSelect">Skills:</label>
         <select id="skillSelect">
@@ -42,7 +42,13 @@
             <option value="5">SQL</option>
         </select>
 
-        <div id="skillsContainer"></div>
+        <div id="skillsContainer">
+            <?php if ($offer->skilles): ?>
+                <?php foreach ($offer->skilles as $skilles): ?>
+
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
         <button type="submit">Create Offer</button>
     </form>
     <script src="view/public_assets/JS/addOffer.js"></script>
