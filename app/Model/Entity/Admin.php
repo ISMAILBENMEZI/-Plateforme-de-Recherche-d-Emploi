@@ -1,4 +1,5 @@
 <?php
+use  Model\Entity\User;
 class Admin extends User
 {
 

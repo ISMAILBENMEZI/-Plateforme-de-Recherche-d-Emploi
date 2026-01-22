@@ -2,25 +2,29 @@ CREATE DATABASE CareerLink;
 
 USE CareerLink;
 
-CREATE TABLE roles (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50)
-);
+CREATE TABLE
+    roles (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(50)
+    );
 
 INSERT INTO
     roles (id, name)
-VALUES (1, 'admin'),
+VALUES
+    (1, 'admin'),
     (2, 'recruteur'),
     (3, 'candidat');
 
-CREATE TABLE users (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50),
-    email VARCHAR(50),
-    password VARCHAR(255),
-    role_id INT,
-    FOREIGN KEY (role_id) REFERENCES roles (id)
-);
+CREATE TABLE
+    users (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(50),
+        email VARCHAR(50),
+        password VARCHAR(255),
+        role_id INT,
+        FOREIGN KEY (role_id) REFERENCES roles (id)
+    );
+
 
 CREATE TABLE user_skills (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,12 +34,11 @@ CREATE TABLE user_skills (
     FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
 
-CREATE TABLE categories (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(200)
-);
-
-//skills // tags;
+CREATE TABLE
+    categories (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(200)
+    );
 
 CREATE TABLE skills (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -66,4 +69,13 @@ CREATE TABLE postule (
     FOREIGN KEY (offer_id) REFERENCES offers (id)
 );
 
+
+CREATE TABLE
+    offer_tag (
+        offer_id INT NOT NULL,
+        tag_id INT NOT NULL,
+        PRIMARY KEY (offer_id, tag_id),
+        FOREIGN KEY (offer_id) REFERENCES offers (id) ON DELETE CASCADE,
+        FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
+    );
 

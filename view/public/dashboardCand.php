@@ -1,23 +1,3 @@
-<?php
-session_start();
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-use App\Model\Repository\CategoryRepository;
-use App\Model\Repository\SkillRepository;
-
-$categoryRepo = new CategoryRepository();
-$categories = $categoryRepo->getAll();
-
-$selectedCategory = $_GET['category'] ?? null;
-
-$skills = [];
-if ($selectedCategory) {
-    $skillRepo = new SkillRepository();
-    $skills = $skillRepo->getByCategory($selectedCategory);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,56 +7,56 @@ if ($selectedCategory) {
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">CareerLink</div>
-            <ul class="nav-links">
-                <li><a href="Home.php">Accueil</a></li>
-                <li><a href="offers.php">Offres</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav>
+    <div class="nav-container">
+        <div class="logo">CareerLink</div>
+        <ul class="nav-links">
+            <li><a href="home.php">Accueil</a></li>
+            <li><a href="offers.php">Offres</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- SELECT CATEGORY -->
-    <section class="search-section">
-        <div class="search-container">
-            <h2 class="section-title">Choisir une catégorie</h2>
-            <form method="GET" action="" class="search-bar">
-                <select name="category" class="filter-select" required>
-                    <option value="">-- Choisir une catégorie --</option>
+<!-- SELECT CATEGORY -->
+<section class="search-section">
+    <div class="search-container">
+        <h2 class="section-title">Choisir une catégorie</h2>
 
-                    <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id ?>"
-                            <?= ($selectedCategory == $category->id) ? 'selected' : '' ?>>
-                            <?= $category->name ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+        <form method="GET" action="">
+            <select name="category" class="filter-select">
+                <option value="">-- Choisir une catégorie --</option>
 
-                <button type="submit" class="btn-primary">Valider</button>
-            </form>
-        </div>
-    </section>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category->id ?>"
+                        <?= (!empty($selectedCategory) && $selectedCategory == $category->id) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($category->name) ?>
+                    </option>
+                <?php endforeach; ?>
 
-    <!-- SHOW SKILLS -->
-    <?php if ($selectedCategory && !empty($skills)): ?>
-        <section class="search-section">
-            <div class="search-container">
-                <h2 class="section-title">Compétences disponibles</h2>
+            </select>
 
-                <form class="skills-list" method="POST" action="save_skills.php">
-                    <?php foreach ($skills as $skill): ?>
-                        <label class="skill-item">
-                            <input type="checkbox" name="skills[]" value="<?= $skill->id ?>">
-                            <?= $skill->name ?>
-                        </label>
-                    <?php endforeach; ?>
+            <button type="submit" class="btn-primary">Valider</button>
+        </form>
+    </div>
+</section>
 
-                    <button type="submit" class="btn-primary">Enregistrer</button>
-                </form>
-            </div>
-        </section>
-    <?php endif; ?>
+<!-- SHOW SKILLS -->
+<?php if (!empty($skills)): ?>
+<section class="search-section">
+    <div class="search-container">
+        <h2 class="section-title">Compétences disponibles</h2>
+
+        <form class="skills-list" method="POST" action="">
+            <?php foreach ($skills as $skill): ?>
+                <label class="skill-item">
+                    <input type="checkbox" name="skills[]" value="<?= $skill->id ?>">
+                    <?= htmlspecialchars($skill->name) ?>
+                </label>
+            <?php endforeach; ?>
+        </form>
+    </div>
+</section>
+<?php endif; ?>
 
 </body>
 </html>

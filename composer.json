@@ -1,7 +1,9 @@
 {
     "autoload": {
         "psr-4": {
-            "App\\":"app/"
+            "App\\":"app/",
+            "Model\\": "app/Model/",
+             "Services\\": "app/Services/"
         }
     }
 }

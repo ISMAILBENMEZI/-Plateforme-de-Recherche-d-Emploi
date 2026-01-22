@@ -1,35 +1,41 @@
 <?php
 namespace App\Core;
-use PDOException;
-use PDO;
 
-class Database {
+use PDO;
+use PDOException;
+
+class Database
+{
     private static $instance = null;
-    private $pdo;
+    private $conn;
     private $host = 'localhost';
-    private $dbname = 'CareerLink';
-    private $username = 'root';
+    private $user = 'root';
+    private $db = 'CareerLink';
     private $password = '';
 
-    private function __construct() {
+    private function __construct()
+    {
         try {
-            $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=utf8mb4";
-            $this->pdo = new PDO($dsn, $this->username, $this->password);
-            
-        } catch (PDOException $e) {
-            die("Database connection failed: " . $e->getMessage());
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $erorr) {
+            die("Database Connection Failed: " . $erorr->getMessage());
         }
     }
 
-    public static function getInstance(): Database {
-        if (!self::$instance) {
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
             self::$instance = new Database();
         }
+
         return self::$instance;
     }
 
-    public function getConnection(): PDO {
-        return $this->pdo;
+    public function getConnection()
+    {
+        return $this->conn;
     }
-
 }
+
+
