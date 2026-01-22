@@ -6,7 +6,7 @@ use App\Model\Entity\Category;
 use PDOException;
 use PDO;
 
-class AdminRepository
+class CategoryRepository
 {
     private $connection;
     public function __construct()
@@ -27,23 +27,7 @@ class AdminRepository
 
     }
 
-    public function AddTags($tags)
-    {
-        try {
-            $query = 'INSERT INTO tags(name,category_id)VALUES(:name,:category_id)';
-            $stmt = $this->connection->prepare($query);
-            $stmt->bindValue(":name", $tags->name);
-            $stmt->bindValue(":category_id", $tags->category_id);
-
-            $stmt->execute();
-            $this->connection->lastInsertId();
-            return $tags;
-
-
-        } catch (PDOException $e) {
-            echo "Failed to add a skils" . $e->getMessage();
-        }
-    }
+  
     public function displayAllCatgorys()
     {
         try {

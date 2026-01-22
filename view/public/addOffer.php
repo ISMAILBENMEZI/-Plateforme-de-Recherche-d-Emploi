@@ -3,7 +3,7 @@
 
 <head>
     <title>Test Offer Form</title>
-    <link rel="stylesheet" href="../public_assets/CSS/addOffer.css">
+    <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/addOffer.css">
 </head>
 
 <body>

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareerLink - Plateforme de Recrutement</title>
 
-
+<
     <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&icon_names=health_cross" /><body>
 
   </head>
@@ -20,8 +21,10 @@
 
 
 
+
                 <li><a href="Home">Accueil</a></li>
                 <li><a href="offers">Offres</a></li>
+
                 <li><a href="categories">Catégories</a></li>
            
             </ul>
@@ -35,7 +38,7 @@
         <div class="categories-grid">
             
               <div class="category-card">
-                <a href="addCategorie.php">
+                <a href="addCategorie">
             <div class="category-icon">
 
             <span class="material-symbols-outlined">
@@ -50,14 +53,10 @@
                 <input type="hidden" value="<?=$cat->id?>" name="categoryId">
             </div>
             <?php endforeach;?>
-           
-            
-              
         </div>
 
 
         </section>
 </body>
-
 
 </html>
