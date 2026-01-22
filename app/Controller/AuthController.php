@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Controller;
-use App\Core\Session;
 use Services\AuthServices;
 use Model\Entity\User;
 use Model\Entity\Role;
 
 class AuthController
 {
-
+    
     public function home()
     {
         require __DIR__ . '/../../view/public/home.php';
@@ -19,7 +18,7 @@ class AuthController
     }
     public function derregister()
     {
-        require __DIR__ . '/../../view/public/register.php';
+         require __DIR__ . '/../../view/public/register.php';
     }
     public function login()
     {
@@ -27,41 +26,25 @@ class AuthController
             if (!empty($_POST['email']) || !empty($_POST['password'])) {
                 $user = new User($_POST['email'], $_POST['password']);
                 $auth = new AuthServices();
-                $userCheck = $auth->login($user);
-                if (is_object($userCheck)) {
-                    switch ($userCheck->getRole()->getName()) {
-                        case 'candidat':
-                            require __DIR__ . '/../../view/public/offers.php';
-                            break;
-                        case 'recruteur':
-                            require __DIR__ . '/../../view/public/recruteur.php';
-                            break;
-                        case 'Admin':
-                            require __DIR__ . '/../../view/public/recruteur.php';
-                            break;
-
-                        default:
-                            # code...
-                            break;
-                    }
-                } else {
-                    require __DIR__ . '/../../view/public/login.php';
+                if ($auth->login($user)) {
+                    require __DIR__ . '/../../view/public/offers.php';
                 }
             }
         }
+        
     }
     public function register()
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+           
             if (!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['role']) || !empty($_POST['password']) || !empty($_POST['passwordConfig'])) {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $nameRole = $_POST['role'];
+                $email=$_POST['email'];
+                $password=$_POST['password'];
+                $nameRole=$_POST['role'];
 
                 $role = new Role($nameRole);
-                $user = new User($email, $password);
+                $user = new User($email,$password);
                 $user->setName($_POST['name']);
                 $user->setRole($role);
                 $auth = new AuthServices();
@@ -70,9 +53,6 @@ class AuthController
                 }
             }
         }
-    }
-    public function logaut(){
-            Session::destroy();
-            require __DIR__ . '/../../view/public/login.php';
+       
     }
 }

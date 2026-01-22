@@ -4,9 +4,8 @@ namespace Services;
 
 use Model\Repository\AuthRepository;
 use Model\Entity\User;
-use App\Core\Session;
-
-Session::start();
+ use App\Core\Session;
+ Session::start();
 class AuthServices
 {
 
@@ -14,32 +13,27 @@ class AuthServices
     {
         $auth = new AuthRepository();
         $res = $auth->findByEmail($user);
-       
-        if ($res && password_verify($user->getPassword() , $res->getPassword())) {
-            Session::set('User_id', $res->getId());
-            Session::set('User_name', $res->getName());
-            Session::set('User_email', $res->getEmail());
-            Session::set('User_role', $res->getRole());
-            return $res;
-
+   ;
+        if ($res && $user->getPassword()==$res[0]['password']) {
+            return true;
         }
         return false;
     }
-    public function register(User $user, $passwordConfig)
+     public function register(User $user,$passwordConfig)
     {
-
-        if ($user->getPassword() != $passwordConfig) {
-            Session::set('error_register', 'le mot de passe ou email incorrecte');
-            return false;
+       
+        if($user->getPassword()!=$passwordConfig){
+             Session::set('error_register','le mot de passe ou email incorrecte');
+             return false;
+             }
+             $auth = new AuthRepository();
+             $res = $auth->findByEmail($user);
+             if ($res) {
+                 Session::set('error_register','le compte qui deja existe');
+                 
+            // return false;
         }
-        $auth = new AuthRepository();
-        $res = $auth->findByEmail($user);
-        if ($res) {
-            Session::set('error_register', 'le compte qui deja existe');
-
-            return false;
-        }
-        $user->setPassword(password_hash($user->getPassword(),PASSWORD_BCRYPT));
         return $auth->insert($user);
+        
     }
 }

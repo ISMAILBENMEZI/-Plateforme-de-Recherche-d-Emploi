@@ -16,11 +16,35 @@
                 <li><a href="Home">Accueil</a></li>
                 <li><a href="offers">Offres</a></li>
                 <li><a href="categories">Catégories</a></li>
+           
             </ul>
-            <a href="logout" class="btn-primary">Déconnexion</a>
+            <a href="logaut" class="btn-primary">deconnexion</a>
         </div>
     </nav>
     
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>CareerLink - Plateforme de Recrutement</title>
+      <link rel="stylesheet" href="../public_assets/CSS/style.css">
+
+  </head>
+
+  <body>
+      <nav>
+          <div class="nav-container">
+              <div class="logo">CareerLink</div>
+              <ul class="nav-links">
+                  <li><a href="Home">Accueil</a></li>
+                  <li><a href="offers">Offres</a></li>
+                  <li><a href="categories">Catégories</a></li>
+                  <li><a href="#about">À propos</a></li>
+              </ul>
+              <a href="#login" class="btn-primary">Connexion</a>
+          </div>
+      </nav>
+
       <section class="search-section">
           <div class="search-container">
               <div class="search-bar">
