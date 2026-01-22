@@ -15,7 +15,7 @@ class Offer
     private $id;
     private $skills = [];
 
-    public function __construct($title, $job_name, $salary, $location, $deadline, $user_id, $skills, $id = null)
+    public function __construct($title, $job_name, $salary, $location, $deadline, $user_id, $skills = null, $id = null)
     {
         $this->title = $title;
         $this->job_name = $job_name;
@@ -24,7 +24,7 @@ class Offer
         $this->deadline = $deadline;
         $this->user_id = $user_id;
         $this->id = $id;
-        $this->skills = $skills;
+        $this->skills = $skills ?? [];
     }
 
     public function getSkills()
@@ -70,5 +70,13 @@ class Offer
     public function setId($id)
     {
        $this->id = $id;
+    }
+
+    public function addSkill($id , $name)
+    {
+        $this->skills[] = [
+            'id' => $id,
+            'name' => $name
+        ];
     }
 }

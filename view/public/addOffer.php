@@ -8,12 +8,14 @@
 
 <body>
 
-    <h2>Create Offer</h2>
+    <h2><?= empty($offer->getId()) ? 'Create Offer' : 'Update Offer' ?></h2>
 
-    <form method="POST" action="creatOffer">
+    <form method="POST" action="<?= empty($offer->getId()) ? 'creatOffer' : 'updateOffer' ?>">
 
         <label for="Title">Title:</label>
-        <input type="text" name="title" id="Title" value="<?= $offer->title ?? '' ?>" required>
+        <input type="text" name="title" id="Title" value="<?= $offer->getTitle() ?? '' ?>" required>
+        <input type="hidden" name="user_id" value="<?= $offer->getUserId() ?? '' ?>">
+        <input type="hidden" name="offer_id" value="<?= $offer->getId() ?? '' ?>">
 
         <label for="job_name">Job Name:</label>
         <select name="job_name" id="job_name" required>
@@ -24,13 +26,13 @@
         </select>
 
         <label for="salary">Salary:</label>
-        <input type="number" name="salary" id="salary" value="<?= $offer->salary  ?? '' ?>" required>
+        <input type="number" name="salary" id="salary" value="<?= $offer->getSalary()  ?? '' ?>" required>
 
         <label for="location">Location:</label>
-        <input type="text" name="location" id="location" value="<?= $offer->location  ?? '' ?>" required>
+        <input type="text" name="location" id="location" value="<?= $offer->getLocation()  ?? '' ?>" required>
 
         <label for="deadline">Deadline:</label>
-        <input type="date" name="deadline" id="deadline" value="<?= $offer->application_deadline  ?? '' ?>" required>
+        <input type="date" name="deadline" id="deadline" value="<?= $offer->getDeadline()  ?? '' ?>" required>
 
         <label for="skillSelect">Skills:</label>
         <select id="skillSelect">
@@ -43,15 +45,24 @@
         </select>
 
         <div id="skillsContainer">
-            <?php if ($offer->skilles): ?>
-                <?php foreach ($offer->skilles as $skilles): ?>
+            <?php if (!empty($offer->getSkills())): ?>
+                <?php foreach ($offer->getSkills() as $skill): ?>
+                    <input type="hidden"
+                        name="skills[]"
+                        value="<?= $skill['id'] ?>"
+                        data-id="<?= $skill['id'] ?>">
 
+                    <span class="addNewTags"
+                        data-id="<?= $skill['id'] ?>">
+                        <?= htmlspecialchars($skill['name']) ?> ×
+                    </span>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <button type="submit">Create Offer</button>
+        <button type="submit"><?= empty($offer->getId) ? 'Create Offer' : 'Update Offer' ?></button>
     </form>
     <script src="view/public_assets/JS/addOffer.js"></script>
+
 </body>
 
 </html>

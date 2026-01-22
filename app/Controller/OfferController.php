@@ -28,8 +28,6 @@ class OfferController
     public function goToUpdateOffer()
     {
         $offer = $this->getOfferBuId();
-        var_dump($offer);
-        exit;
         require 'view/public/addOffer.php';
     }
 
@@ -111,10 +109,48 @@ class OfferController
         }
     }
 
-    // public function updateOffer()
-    // {
+    public function updateOffer()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $job_name = $_POST['job_name'] ?? '';
+            $salary = $_POST['salary'] ?? '';
+            $location = $_POST['location'] ?? '';
+            $deadline = $_POST['deadline'] ?? '';
+            $skills = $_POST['skills'] ?? '';
+            $user_id = $_POST['user_id'] ?? '';
+            $offer_id = $_POST['offer_id'] ?? '';
 
-    // }
+            $skills = array_unique($skills);
+
+            if (empty($title) || empty($job_name) || empty($salary) || empty($location) || empty($deadline)  || empty($user_id) || empty($skills)||empty($offer_id)||empty($user_id) || !is_array($skills)) {
+                $_SESSION['erorr'] = "Please fill in all fields.";
+                var_dump($_POST);
+                exit;
+                return;
+            }
+
+            $offer = new offer(
+                title: $title,
+                job_name: $job_name,
+                salary: $salary,
+                location: $location,
+                deadline: $deadline,
+                user_id: $user_id,
+                skills: $skills,
+                id:$offer_id
+            );
+
+            $result = $this->offerServices->updateOffer($offer);
+            if ($result) {
+                $_SESSION['success'] = 'The offer has been created successfully.';
+                require 'view/public/recruteur.php';
+            } else {
+                $_SESSION['erorr'] = "Failed to create the offer. Please try again later.";
+                require 'view/public/addOffer.php';
+            }
+        }
+    }
 
     public function deleteOffer()
     {
