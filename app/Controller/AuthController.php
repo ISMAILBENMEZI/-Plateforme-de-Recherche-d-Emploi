@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Core\Session;
 use Services\AuthServices;
 use Model\Entity\User;
 use Model\Entity\Role;
@@ -36,6 +36,9 @@ class AuthController
                         case 'recruteur':
                             require __DIR__ . '/../../view/public/recruteur.php';
                             break;
+                        case 'Admin':
+                            require __DIR__ . '/../../view/public/recruteur.php';
+                            break;
 
                         default:
                             # code...
@@ -67,5 +70,9 @@ class AuthController
                 }
             }
         }
+    }
+    public function logaut(){
+            Session::destroy();
+            require __DIR__ . '/../../view/public/login.php';
     }
 }
