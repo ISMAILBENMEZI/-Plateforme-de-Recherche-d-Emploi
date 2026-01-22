@@ -1,6 +1,7 @@
 <?php
 require_once "vendor/autoload.php";
 use App\Controller\AdminController;
+use App\Controller\CategoryController;
 use App\Core\Router;
 
 // $admin = new AdminController();
@@ -11,8 +12,13 @@ use App\Core\Router;
 
 
 $router = new Router();
-$router->addPath('categories', ['AdminController', 'categories']);
+$router->addPath('Tags', ['AdminController', 'displayTags']);
+$router->addPath('categories', ['AdminController', 'displayCategories']);
 $router->addPath('addCategorie', ['AdminController', 'checkAndCreatCategory']);
+$router->addPath('addTags', ['AdminController', 'checkAndCreatTags']);
+
+
+
 $router->addPath('recruteur', ['OfferController', 'recruteur']);
 $router->addPath('creatOffer', ['OfferController', 'creatOffer']);
 $router->addPath('createNewOffer', ['OfferController', 'createNewOffer']);

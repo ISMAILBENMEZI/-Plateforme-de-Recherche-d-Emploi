@@ -37,8 +37,10 @@
             </div>
             <?php foreach($categories as $cat):?>
             <div class="category-card">
+                <a href="Tags">
                 <h3 class="category-name"><?=$cat->name?></h3>
                 <input type="hidden" value="<?=$cat->id?>" name="categoryId">
+                </a>
             </div>
             <?php endforeach;?>
         </div>
