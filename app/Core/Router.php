@@ -26,6 +26,7 @@ class Router
 
     public function disPath($url)
     {
+        // var_dump($this->routes);
         if (array_key_exists($url, $this->routes)) {
             $action = $this->routes[$url];
             $controllerName = "App\Controller\\" . $action[0];

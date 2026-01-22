@@ -1,12 +1,15 @@
 <?php
 namespace App\Controller;
 
+use App\Services\TagsServices;
 use App\Services\CategoryServices;
+
 use PDOException;
 
 class AdminController
 {
-    public function checkCategoryInput()
+   
+    public function checkAndCreatCategory()
     {
         try {
             if (!empty($_POST['categoryName'])) {
@@ -19,11 +22,19 @@ class AdminController
         }
     }
 
-    public function displayCategories()
+      public function checkAndCreatTags()
     {
-        $categoryServices = new CategoryServices();
-        $categories = $categoryServices->getAll();
-
-        include 'view/public/categories.php';
+        try {
+            if (!empty($_POST['categoryName'])) {
+                $TagName = $_POST['TagName'];
+                $category_id=$_POST["categoryId"];
+                $TagsServices = new TagsServices();
+                $TagsServices->CreatTags($TagName,$category_id);
+            }
+        } catch (PDOException $e) {
+            echo "Failed to check category: " . $e->getMessage();
+        }
     }
+
+
 }

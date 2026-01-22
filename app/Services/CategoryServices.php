@@ -1,12 +1,12 @@
 <?php
 namespace App\Services;
-use App\Model\Repository\AdminRepository;
+use App\Model\Repository\CategoryRepository;
 use App\Model\Entity\Category;
 use PDOException;
 class CategoryServices{ 
     private $AdminRepository;
     public function __construct(){
-     $this->AdminRepository=new AdminRepository();
+     $this->AdminRepository=new CategoryRepository();
     }
     public function CreatCategory($CategoryName){
         try{
@@ -19,7 +19,7 @@ class CategoryServices{
         }
     }
     public function getAll(){
-        $categoryes=new AdminRepository();
+        $categoryes=new CategoryRepository();
         $category=$categoryes->displayAllCatgorys();
         return $category;
     }
