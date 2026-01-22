@@ -1,64 +1,59 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerLink - Plateforme de Recrutement</title>
+    <title>CareerLink</title>
     <link rel="stylesheet" href="../public_assets/CSS/style.css">
-    
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">CareerLink</div>
-            <ul class="nav-links">
-                <li><a href="Home.php">Accueil</a></li>
-                <li><a href="offers.php">Offres</a></li>
-                <li><a href="categories.php">Catégories</a></li>
-                <li><a href="#about">À propos</a></li>
-            </ul>
-            <a href="#login" class="btn-primary">Connexion</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Trouvez votre prochain emploi</h1>
-        <p>Des milliers d'opportunités vous attendent sur CareerLink</p>
-    </section>
+<nav>
+    <div class="nav-container">
+        <div class="logo">CareerLink</div>
 
-    <!-- Search Section -->
-    
+        <ul class="nav-links">
+            <li><a href="Home.php">Accueil</a></li>
+            <li><a href="offers.php">Offres</a></li>
+            <li><a href="categories.php">Catégories</a></li>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Latest Jobs -->
-    
+            <?php if (isset($_SESSION['user'])): ?>
+                <?php if ($_SESSION['user']->role === 'candidat'): ?>
+                    <li><a href="candidate_dashboard.php">Mon Dashboard</a></li>
+                <?php elseif ($_SESSION['user']->role === 'recruteur'): ?>
+                    <li><a href="recruiter_dashboard.php">Dashboard Recruteur</a></li>
+                <?php endif; ?>
+            <?php endif; ?>
+        </ul>
 
-        <!-- Categories -->
-        
-
-        <!-- Stats (Admin Dashboard) -->
-        <h2 class="section-title">Statistiques</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">890</div>
-                <div class="stat-label">Offres actives</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">156</div>
-                <div class="stat-label">Recruteurs actifs</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">2.4K</div>
-                <div class="stat-label">Candidatures ce mois</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">67%</div>
-                <div class="stat-label">Taux de réponse</div>
-            </div>
-        </div>
+        <?php if (isset($_SESSION['user'])): ?>
+            <a href="logout.php" class="btn-primary">Déconnexion</a>
+        <?php else: ?>
+            <a href="login.php" class="btn-primary">Connexion</a>
+        <?php endif; ?>
     </div>
+</nav>
+
+<section class="hero">
+    <h1>Trouvez votre prochain emploi</h1>
+    <p>Des milliers d'opportunités vous attendent</p>
+
+    <?php if (!isset($_SESSION['user'])): ?>
+        <a href="register.php" class="btn-primary">Créer un compte</a>
+
+    <?php elseif ($_SESSION['user']->role === 'candidat'): ?>
+        <a href="candidate_dashboard.php" class="btn-primary">
+            Voir mes offres recommandées
+        </a>
+
+    <?php elseif ($_SESSION['user']->role === 'recruteur'): ?>
+        <a href="recruiter_dashboard.php" class="btn-primary">
+            Gérer mes offres
+        </a>
+    <?php endif; ?>
+</section>
+
 </body>
 </html>

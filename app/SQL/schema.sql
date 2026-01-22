@@ -24,10 +24,10 @@ CREATE TABLE users (
 
 CREATE TABLE user_skills (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    job VARCHAR(255),
-    skills VARCHAR(255),
+    skill_id INT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
 
 CREATE TABLE categories (
@@ -35,7 +35,9 @@ CREATE TABLE categories (
     name VARCHAR(200)
 );
 
-CREATE TABLE tags (
+//skills // tags;
+
+CREATE TABLE skills (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
     category_id INT,
@@ -49,7 +51,9 @@ CREATE TABLE offers (
     location VARCHAR(100),
     description VARCHAR(255),
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    category_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
 CREATE TABLE postule (
@@ -61,3 +65,5 @@ CREATE TABLE postule (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (offer_id) REFERENCES offers (id)
 );
+
+

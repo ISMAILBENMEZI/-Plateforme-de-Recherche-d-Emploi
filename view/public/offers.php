@@ -21,8 +21,6 @@
             <a href="#login" class="btn-primary">Connexion</a>
         </div>
     </nav>
-    
-
     <section class="search-section">
         <div class="search-container">
             <div class="search-bar">
