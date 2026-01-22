@@ -45,12 +45,8 @@
             
               
         </div>
-<<<<<<< HEAD
         </section>
 </body>
-=======
-    </section>
-</body>
 
->>>>>>> f628ea6e62118ce30782fcbaabf5b6814bff546b
+    
 </html>

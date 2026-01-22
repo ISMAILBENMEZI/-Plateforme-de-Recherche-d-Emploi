@@ -19,6 +19,9 @@ class User {
     public function setName($name){
      $this->name=$name;   
     }
+    public function setPassword($password){
+     $this->password=$password;   
+    }
     public function setRole($role){
      $this->role=$role;   
     }

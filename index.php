@@ -3,9 +3,9 @@ require_once "vendor/autoload.php";
 use App\Controller\AdminController;
 use App\Core\Router;
 
-$admin = new AdminController();
-$admin->checkCategoryInput();
-$admin->displayCategories();
+// $admin = new AdminController();
+// $admin->checkCategoryInput();
+// $admin->displayCategories();
 
 
 
