@@ -85,7 +85,7 @@
 <div class="card">
     
 
-    <form action="../../index.php" method="POST">
+    <form action="categories" method="POST">
     <label for="name">Name of category</label>
     <input type="text" id="name" name="categoryName" placeholder="Enter your name">
 

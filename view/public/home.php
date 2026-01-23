@@ -21,7 +21,7 @@ session_start();
         <ul class="nav-links">
             <li><a href="home">Accueil</a></li>
             <li><a href="offers">Offres</a></li>
-            <li><a href="Categories">Catégories</a></li>
+            <li><a href="categories">Catégories</a></li>
         </ul>
 
         <a href="derLogin" class="btn-primary">Connexion</a>
@@ -64,13 +64,6 @@ session_start();
     </div>
 </section>
 
-<!-- Dernières Offres -->
-
-
-<!-- Categories -->
-
-
-<!-- Footer -->
 <footer>
     © 2026 CareerLink — Plateforme de recrutement moderne
 </footer>
