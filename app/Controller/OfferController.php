@@ -38,7 +38,7 @@ class OfferController
 
     public function offer()
     {
-        $sessionOffer = Session::get('User_role');
+        $sessionOffer = Session::get('User_role')->getName();
         $offers = $this->getAllOffer();
         require 'view/public/offers.php';
     }

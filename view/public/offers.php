@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -57,7 +58,7 @@
             <?php if ((!empty($offers))): ?>
                 <?php foreach ($offers as $offer): ?>
                     <div class="job-card">
-                        <?php if ($sessionOffer == 'Admin'): ?>
+                        <?php if ($sessionOffer === 'Admin'): ?>
                             <div class="card-menu">
                                 <button type="button" class="menu-btn">⋮</button>
                                 <div class="menu-dropdown">
