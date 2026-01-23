@@ -12,13 +12,13 @@ $router->addPath('deleteOffer',['OfferController','deleteOffer']);
 $router->addPath('updateOffer',['OfferController','updateOffer']);
 $router->addPath('addOffer',['OfferController','addOffer']);
 $router->addPath('goToUpdateOffer',['OfferController','goToUpdateOffer']);
-
-
+$router->addPath('api',['OfferController','getAllCategoriesWithTags']);
+$router->addPath('offer',['OfferController' , 'offer']);
 $router->addPath('categories', ['AdminController', 'categories']);
 $router->addPath('addCategorie', ['AdminController', 'checkAndCreatCategory']);
 $router->addPath('Tags', ['AdminController', 'displayTags']);
 $router->addPath('addTags', ['AdminController', 'checkAndCreatTags']);
-
+$router->addPath('Postuler' , ['CandidatController','Postuler']);
 
 
 $router->addPath('recruteur', ['OfferController', 'recruteur']);

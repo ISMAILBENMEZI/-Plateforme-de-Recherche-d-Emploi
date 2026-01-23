@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Model\Repository\OfferRepository;
 use App\Model\Entity\Offer;
+use App\Model\Entity\Category;
 
 class OfferServices
 {
@@ -35,20 +36,20 @@ class OfferServices
         $offers = [];
 
         foreach ($rows as $row) {
-            if (!isset($offers[$row->id])) {
-                $offers[$row->id] = new Offer(
+            if (!isset($offers[$row->offer_id])) {
+                $offers[$row->offer_id] = new Offer(
                     title: $row->title,
                     job_name: $row->job_name,
                     salary: $row->salary,
                     location: $row->location,
                     deadline: $row->application_deadline,
                     user_id: $row->user_id,
-                    id: $row->id
+                    id: $row->offer_id
                 );
+            }
 
-                if ($row->tag_id !== null) {
-                    $offers[$row->id]->addSkill($row->tag_id, $row->tag_name);
-                }
+            if ($row->tag_id !== null) {
+                $offers[$row->offer_id]->addSkill($row->tag_id, $row->tag_name);
             }
         }
         return array_values($offers);
@@ -109,46 +110,30 @@ class OfferServices
         $result = $this->offerRepository->updateOffer($offer);
         return $result;
     }
-}
 
+    public function getAllCategoriesWithTags()
+    {
+        $rows = $this->offerRepository->getAllCategoriesWithTags();
 
+        $categories = [];
 
+        foreach ($rows as $row) {
+            if (!isset($categories[$row->category_id])) {
+                $categories[$row->category_id] = new Category(
+                    name: $row->category_name,
+                    id: $row->category_id
+                );
+            }
 
-/*
-public function getOfferByUserId(Offer $offer): array
-{
-    $rows = $this->offerRepository->getOfferByUserId($offer);
-
-    if (empty($rows)) {
-        return [];
-    }
-
-    $offers = [];
-
-    foreach ($rows as $row) {
-
-        if (!isset($offers[$row->id])) {
-            $offers[$row->id] = new Offer(
-                title: $row->title,
-                job_name: $row->job_name,
-                salary: $row->salary,
-                location: $row->location,
-                deadline: $row->application_deadline,
-                user_id: $row->user_id,
-                id: $row->id
-            );
+            if ($row->tag_id !== null) {
+                $categories[$row->category_id]->addTags([
+                    'id'   => $row->tag_id,
+                    'name' => $row->tag_name
+                ]);
+            }
         }
 
-        // إضافة Skills (Tags)
-        if ($row->tag_id !== null) {
-            $offers[$row->id]->addSkill(
-                $row->tag_id,
-                $row->tag_name
-            );
-        }
+
+        return array_values($categories);
     }
-
-    return array_values($offers);
 }
-
-*/
