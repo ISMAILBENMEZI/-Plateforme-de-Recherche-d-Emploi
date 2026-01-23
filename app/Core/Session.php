@@ -22,7 +22,12 @@ class Session
     }
 
     public static function destroy()
-    {
-        session_destroy();
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
+
+    session_unset();  
+    session_destroy();  
+}
 }

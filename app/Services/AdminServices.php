@@ -42,5 +42,16 @@ class AdminServices{
         return $Tags;
     }
 
+    public function DeleteCategorySevice(){
+        try{
+            $categoryId=$_POST["deleteBtn"];
+            $this->AdminRepository->DeletCategory($categoryId);
+        }
+        catch(PDOException $e){
+            echo "FAILED".$e->getMessage();
+        }
+
+    }
+
 
 }

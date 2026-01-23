@@ -1,20 +1,13 @@
 <?php
 require_once "vendor/autoload.php";
-use App\Controller\AdminController;
-use App\Controller\CategoryController;
 use App\Core\Router;
-
-// $admin = new AdminController();
-// $admin->checkAndCreatCategory();
-// $admin->displayCategories();
-
-
 
 
 $router = new Router();
-$router->addPath('Tags', ['AdminController', 'displayTags']);
+
 $router->addPath('categories', ['AdminController', 'displayCategories']);
 $router->addPath('addCategorie', ['AdminController', 'checkAndCreatCategory']);
+$router->addPath('Tags', ['AdminController', 'displayTags']);
 $router->addPath('addTags', ['AdminController', 'checkAndCreatTags']);
 
 
@@ -27,4 +20,5 @@ $router->addPath('login', ['AuthController', 'login']);
 $router->addPath('register', ['AuthController', 'register']);
 $router->addPath('derLogin', ['AuthController', 'derLogin']);
 $router->addPath('derregister', ['AuthController', 'derregister']);
+$router->addPath('logaut', ['AuthController', 'logaut']);
 $router->run();

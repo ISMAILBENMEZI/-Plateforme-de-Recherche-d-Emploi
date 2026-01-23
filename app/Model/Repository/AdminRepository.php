@@ -53,17 +53,16 @@ class AdminRepository
         }
     }
 
-     public function AddTags($tags)
+     public function AddTags($tag)
     {
         try {
             $query = 'INSERT INTO tags(name,category_id)VALUES(:name,:category_id)';
             $stmt = $this->connection->prepare($query);
-            $stmt->bindValue(":name", $tags->name);
-            $stmt->bindValue(":category_id", $tags->category_id);
-
+            $stmt->bindValue(":name", $tag->name);
+            $stmt->bindValue(":category_id", $tag->categoryId);
             $stmt->execute();
-            $this->connection->lastInsertId();
-            return $tags;
+            // $this->connection->lastInsertId();
+            return $tag;
 
 
         } catch (PDOException $e) {
@@ -74,8 +73,9 @@ class AdminRepository
       public function displayAllTags()
     {
         try {
-            $query = "SELECT * FROM tags";
+            $query = "SELECT * FROM tags where category_id=:category_id";
             $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(":category_id",$_POST["categoryId"]);
             $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -91,6 +91,18 @@ class AdminRepository
         }
         catch(PDOException $e){
             echo "Failed to display".$e->getMessage();
+        }
+    }
+
+    public function DeletCategory($id){
+        try{
+        $query='DELETE FROM categories WHERE id=:id';
+        $stmt=$this->connection->prepare($query);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
+        }
+        catch(PDOException $e){
+            echo "Failed to delete".$e->getMessage();
         }
     }
 
