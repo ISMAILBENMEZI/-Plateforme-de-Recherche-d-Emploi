@@ -17,6 +17,7 @@ class Router
         if($url==''){
            $url='home';
         }
+       
         $this->disPath($url);
 
     }

@@ -15,7 +15,7 @@
             <div class="logo">CareerLink</div>
             <ul class="nav-links">
                 <li><a href="offers">Mes Offres</a></li>
-                <li><a href="createNewOffer" class="btn-primary">+ Nouvelle Offre</a></li>
+                <li><a href="addOffer" class="btn-primary">+ Nouvelle Offre</a></li>
 
             </ul>
             <a href="logout">Déconnexion</a>

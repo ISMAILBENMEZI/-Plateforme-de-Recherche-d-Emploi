@@ -37,3 +37,44 @@ skillsContainer.addEventListener("click", function (e) {
     if (input) input.remove();
     span.remove();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const jobSelect = document.getElementById('job_name');
+    const skillSelect = document.getElementById('skillSelect');
+
+    let categoriesData = [];
+
+    fetch('api')
+        .then(res => res.json())
+        .then(categories => {
+            categoriesData = categories;
+
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                jobSelect.appendChild(option);
+            });
+        });
+
+    jobSelect.addEventListener('change', () => {
+
+        const categoryId = jobSelect.value;
+        skillSelect.innerHTML = '<option value="">Select skill</option>';
+
+        if (!categoryId) return;
+
+        const category = categoriesData.find(c => c.id == categoryId);
+
+        if (category && category.tags) {
+            category.tags.forEach(tag => {
+                const option = document.createElement('option');
+                option.value = tag.id;
+                option.textContent = tag.name;
+                skillSelect.appendChild(option);
+            });
+        }
+    });
+
+});
