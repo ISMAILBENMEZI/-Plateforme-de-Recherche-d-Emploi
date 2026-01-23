@@ -25,54 +25,59 @@
     <section>
         <h2 class="section-title">Mes offres d'emploi</h2>
         <div class="jobs-grid">
-            <div class="job-card">
+            <?php if ((!empty($offers))): ?>
+                <?php foreach ($offers as $offer): ?>
+                    <div class="job-card">
+                        <div class="card-menu">
+                            <button type="button" class="menu-btn">⋮</button>
 
-                <div class="card-menu">
-                    <button type="button" class="menu-btn">⋮</button>
+                            <div class="menu-dropdown">
+                                <form action="goToUpdateOffer" method="POST">
+                                    <input type="hidden" name="offer_id" value="<?= $offer->getId() ?>">
+                                    <input type="hidden" name="user_id" value="<?= $offer->getUserId() ?>">
+                                    <button type="submit" class="menu-item update">Update</button>
+                                </form>
 
-                    <div class="menu-dropdown">
-                        <form action="goToUpdateOffer" method="POST">
-                            <input type="hidden" name="offer_id" value="18">
-                            <input type="hidden" name="user_id" value="1">
-                            <button type="submit" class="menu-item update">Update</button>
-                        </form>
+                                <form action="deleteOffer" method="POST">
+                                    <input type="hidden" name="offer_id" value="<?= $offer->getId() ?>">
+                                    <input type="hidden" name="user_id" value="<?= $offer->getUserId() ?>">
+                                    <button type="submit" class="menu-item delete"
+                                        onclick="return confirm('Are you sure you want to delete this offer?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
 
-                        <form action="deleteOffer" method="POST">
-                            <input type="hidden" name="offer_id" value="19">
-                            <input type="hidden" name="user_id" value="1">
-                            <button type="submit" class="menu-item delete"
-                                onclick="return confirm('Are you sure you want to delete this offer?')">
-                                Delete
-                            </button>
-                        </form>
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title"><?= $offer->getTitle() ?></h3>
+                                <p class="company-name"><?= $offer->getJobName() ?></p>
+                            </div>
+                            <div class="company-logo">TI</div>
+                        </div>
+                        <div class="job-meta">
+                            <span class="meta-item">📍 <?= $offer->getLocation() ?></span>
+                            <span class="meta-item">⏰ CDI</span>
+                            <span class="meta-item">🕐 <?= $offer->getDeadline() ?></span>
+                        </div>
+                        <div class="tags">
+                            <?php if ((!empty($offer->getSkills()))):?>
+                                <?php foreach ($offer->getSkills() as $skill):?>
+                                    <span class="tag"><?= htmlspecialchars($skill['name']) ?></span>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="job-footer">
+                            <span class="salary"><?= $offer->getSalary() ?> DH</span>
+                            <div class="job-actions">
+                                <a href="candidat" class="btn-primary"> Voir les candidats</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Développeur Full Stack</h3>
-                        <p class="company-name">Tech Innovations SA</p>
-                    </div>
-                    <div class="company-logo">TI</div>
-                </div>
-                <div class="job-meta">
-                    <span class="meta-item">📍 Casablanca</span>
-                    <span class="meta-item">⏰ CDI</span>
-                    <span class="meta-item">🕐 Publié il y a 2h</span>
-                </div>
-                <div class="tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">Laravel</span>
-                    <span class="tag">React</span>
-                    <span class="tag">MySQL</span>
-                </div>
-                <div class="job-footer">
-                    <span class="salary">15 000 - 20 000 DH</span>
-                    <div class="job-actions">
-                        <a href="candidat" class="btn-primary"> Voir les candidats</a>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </section>
 
     <script src="view/public_assets/JS/recruteur.js"></script>

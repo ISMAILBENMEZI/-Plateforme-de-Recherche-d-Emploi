@@ -1,6 +1,8 @@
 <?php
 require_once "vendor/autoload.php";
 use App\Core\Router;
+use App\Core\Session;
+Session::start();
 
 
 $router = new Router();

@@ -9,8 +9,8 @@ use PDOException;
 
 class AdminController
 {
-    private $AdminServices;
-    public function __construct()
+
+    public function checkAndCreatCategory()
     {
         $this->AdminServices = new AdminServices();
     }
@@ -30,15 +30,6 @@ class AdminController
         }
     }
 
-    public function displayCategories()
-    {
-
-        $categoryServices = new AdminServices();
-        $categories = $categoryServices->getAllCategory();
-     
-        require __DIR__ . '/../../view/public/categories.php';
-    }
-
     public function checkAndCreatTags()
     {
       
@@ -47,21 +38,11 @@ class AdminController
             if (isset($_POST['submit-TagName'])) {
                 $TagName = $_POST['TagName'];
                 $category_id = $_POST["categoryId"];
-                $TagsServices = new AdminServices();
+                $TagsServices = new TagsServices();
                 $TagsServices->CreatTags($TagName, $category_id);
-               
             }
         } catch (PDOException $e) {
             echo "Failed to check category: " . $e->getMessage();
         }
     }
-    public function displayTags()
-    {
-        $TagsServices = new AdminServices();
-        $Tags = $TagsServices->getAllTags();
-               require __DIR__ . '/../../view/public/Tags.php';
-
-    }
-
-
 }
