@@ -21,7 +21,7 @@ session_start();
         <ul class="nav-links">
             <li><a href="home">Accueil</a></li>
             <li><a href="offers">Offres</a></li>
-            <li><a href="Categories">Catégories</a></li>
+            <li><a href="categories">Catégories</a></li>
         </ul>
 
         <a href="derLogin" class="btn-primary">Connexion</a>

@@ -427,7 +427,9 @@ nav {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
-
+.a{
+color: #10b981;
+}
 .category-count {
   color: var(--text-secondary);
   font-size: 0.9rem;
@@ -531,6 +533,8 @@ nav {
     flex-direction: column;
   }
 }
+
+
 /* ------------------------- */
 
 .job-card {

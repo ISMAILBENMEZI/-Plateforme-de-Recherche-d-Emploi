@@ -83,12 +83,9 @@
 <body>
 
 <div class="card">
-    
-
-    <form action="../../index.php" method="POST">
+    <form action="Tags" method="POST">
     <label for="name">Name of Tag</label>
     <input type="text" id="name" name="TagName" placeholder="Enter your name">
-
     <input type="submit" value="Submit" id="button-sbt" name="submit-TagName">
     </form>
 </div>
