@@ -101,4 +101,30 @@ VALUES (
 );
 
 
+
 SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id 
+
+INSERT INTO offers (id, title, job_name, salary, location, application_deadline, user_id) VALUES
+(1, 'Backend Developer', 'PHP Developer', 8000, 'Casablanca', '2026-02-01', 1),
+(2, 'Frontend Developer', 'JS Developer', 7000, 'Rabat', '2026-02-10', 2),
+(3, 'UI/UX Designer', 'Designer', 6000, 'Marrakech', '2026-02-15', 3);
+
+INSERT INTO tags (id, name) VALUES
+(1, 'PHP'),
+(2, 'Laravel'),
+(3, 'MySQL'),
+(4, 'JavaScript'),
+(5, 'React'),
+(6, 'Figma');
+
+
+INSERT INTO offer_tag (offer_id, tag_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+
+(2, 4),
+(2, 5),
+
+(3, 6);
+

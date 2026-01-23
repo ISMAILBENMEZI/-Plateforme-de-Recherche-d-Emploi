@@ -1,40 +1,48 @@
 <?php
+
 namespace App\Controller;
 
-use App\Services\TagsServices;
-use App\Services\CategoryServices;
+use App\Services\AdminServices;
+
 
 use PDOException;
 
 class AdminController
 {
-   
+
     public function checkAndCreatCategory()
     {
+        $this->AdminServices = new AdminServices();
+    }
+
+    public function checkAndCreatCategory()
+    { 
         try {
-            if (!empty($_POST['categoryName'])) {
+            require __DIR__ . '/../../view/public/addcategorie.php';
+            if (isset($_POST['submit-categoryName'])) {
                 $categoryName = $_POST['categoryName'];
-                $categoryServices = new CategoryServices();
-                $categoryServices->CreatCategory($categoryName);
+                $categoryServices = new AdminServices();
+                $categoryServices->CreatCategory($categoryName);    
+                             
             }
         } catch (PDOException $e) {
             echo "Failed to check category: " . $e->getMessage();
         }
     }
 
-      public function checkAndCreatTags()
+    public function checkAndCreatTags()
     {
+      
         try {
-            if (!empty($_POST['categoryName'])) {
+         require __DIR__. '/../../view/public/addTags.php';
+            if (isset($_POST['submit-TagName'])) {
                 $TagName = $_POST['TagName'];
-                $category_id=$_POST["categoryId"];
+                $category_id = $_POST["categoryId"];
                 $TagsServices = new TagsServices();
-                $TagsServices->CreatTags($TagName,$category_id);
+                $TagsServices->CreatTags($TagName, $category_id);
             }
         } catch (PDOException $e) {
             echo "Failed to check category: " . $e->getMessage();
         }
     }
-
-
 }
