@@ -8,20 +8,20 @@
     
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">CareerLink</div>
             <ul class="nav-links">
+
                 <li><a href="Home">Accueil</a></li>
                 <li><a href="offers">Offres</a></li>
                 <li><a href="categories">Catégories</a></li>
-           
+
             </ul>
-            <a href="logaut" class="btn-primary">deconnexion</a>
+            <a href="logout" class="btn-primary">Déconnexion</a>
         </div>
     </nav>
-    
+
       <section class="search-section">
           <div class="search-container">
               <div class="search-bar">

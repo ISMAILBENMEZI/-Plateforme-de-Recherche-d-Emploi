@@ -44,7 +44,7 @@ select[multiple] {
 button {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
+    background-color: #121633;
     color: white;
     border: none;
     font-size: 16px;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #121633;
 }
 
 #skillsContainer {
@@ -64,7 +64,7 @@ button:hover {
 
 .skill-tag {
     display: inline-block;
-    background: #4CAF50;
+    background: #121633;
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
@@ -76,4 +76,13 @@ button:hover {
     margin-left: 8px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.addNewTags{
+    margin: 5px;
+    background: #121633;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
 }

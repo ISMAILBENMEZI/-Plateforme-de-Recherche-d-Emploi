@@ -5,8 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareerLink - Plateforme de Recrutement</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="view/public_assets/CSS/style.css">
+=======
+
+<
+    <link rel="stylesheet" href="/Plateforme-de-Recherche-d-Emploi/view/public_assets/CSS/style.css">
+
+>>>>>>> f4f2aaca0c14df8079a587d4a075f5550974446c
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&icon_names=health_cross" /><body>
+
+  </head>
+<body>
     <!-- Navigation -->
      <style>
         #card-actions {
@@ -77,6 +87,12 @@
 
                 <li><a href="home">Accueil</a></li>             
                    <li><a href="offers">Offres</a></li>
+
+
+
+                <li><a href="Home">Accueil</a></li>
+                <li><a href="offers">Offres</a></li>
+
                 <li><a href="categories">Catégories</a></li>
            
             </ul>
@@ -124,7 +140,11 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+
         </section>
 
 </body>
+</body>
+
 </html>
