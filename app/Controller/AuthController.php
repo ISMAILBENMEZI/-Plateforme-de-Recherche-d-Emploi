@@ -3,7 +3,7 @@
 namespace App\Controller;
 use App\Core\Session;
 use Services\AuthServices;
-use Model\Entity\User;
+use App\Model\Entity\User;
 use Model\Entity\Role;
 
 class AuthController

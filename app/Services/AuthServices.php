@@ -3,7 +3,7 @@
 namespace Services;
 
 use Model\Repository\AuthRepository;
-use Model\Entity\User;
+use App\Model\Entity\User;
 use App\Core\Session;
 
 Session::start();

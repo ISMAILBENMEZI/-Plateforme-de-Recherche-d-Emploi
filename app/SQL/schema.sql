@@ -78,4 +78,27 @@ CREATE TABLE
         FOREIGN KEY (offer_id) REFERENCES offers (id) ON DELETE CASCADE,
         FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    NULL,
+    'cv_youssef.pdf',
+    5,
+    3
+);
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    'Merci de considérer ma candidature.',
+    'cv_sara.pdf',
+    4,
+    2
+);
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    'Je suis très motivé pour ce poste.',
+    'cv_ahmed.pdf',
+    3,
+    1
+);
 
+
+SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id 

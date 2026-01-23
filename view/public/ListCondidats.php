@@ -27,14 +27,13 @@
         <h1>Liste des Candidats</h1>
 
         <section class="candidates-list">
-            <?php while ($row = $result->fetch_assoc()) { ?>
+            <?php while ($condidats = $condidat->fetch_assoc()) { ?>
                 <div class="candidate-card">
                     <div class="candidate-info">
-                        <p class="candidate-name">Nom : <?= $row['name'] ?></p>
-                        <p class="candidate-email">Email : <?= $row['email'] ?></p>
-                        <p class="candidate-job">Poste : <?= $row['job'] ?></p>
+                        <p class="candidate-name">Nom : <?= $condidat->user->getName()?></p>
+                        <p class="candidate-email">Email : <?= $condidat->user->getEmail() ?></p>
+                        <p class="candidate-job">Poste : <?= $condidat->job_name?></p>
                         <p class="candidate-skills">Compétences : <?= $row['skills'] ?></p>
-                        <p class="candidate-status">Statut : <?= $row['status'] ?></p>
                     </div>
 
                     <div class="candidate-actions">
@@ -46,7 +45,7 @@
                             <button>Télécharger CV</button>
                         </a>
 
-                        <a href="changerStatut.php?id=<?= $row['postule_id'] ?>&status=acceptée">
+                        <a href="changerStatut.php?id=<?= $row['postule_id'] ?>">
                             <button class="btn-accept">Accepter</button>
                         </a>
 
