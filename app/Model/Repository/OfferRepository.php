@@ -56,7 +56,7 @@ class OfferRepository
                 if (is_array($skill)) {
                     $params[] = $skill['id'];
                 } else {
-                    $params[] = $skill; 
+                    $params[] = $skill;
                 }
             }
 
@@ -70,24 +70,24 @@ class OfferRepository
 
     public function updateOffer(Offer $offer)
     {
-        // try {
+        try {
 
-        $query = 'UPDATE offers SET title = :title , job_name = :job_name, salary = :salary, location = :location, application_deadline = :deadline WHERE id = :offer_id AND user_id = :user_id';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            ":title" => $offer->getTitle(),
-            ":job_name" => $offer->getJobName(),
-            ":salary" => $offer->getSalary(),
-            ":location" => $offer->getLocation(),
-            ":deadline" => $offer->getDeadline(),
-            ":user_id" => $offer->getUserId(),
-            ":offer_id" => $offer->getId()
-        ]);
-        $this->updateOfferSkilles($offer);
-        return true;
-        // } catch (PDOException $error) {
-        //     throw new RuntimeException("Database error. Please try again later.");
-        // }
+            $query = 'UPDATE offers SET title = :title , job_name = :job_name, salary = :salary, location = :location, application_deadline = :deadline WHERE id = :offer_id AND user_id = :user_id';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ":title" => $offer->getTitle(),
+                ":job_name" => $offer->getJobName(),
+                ":salary" => $offer->getSalary(),
+                ":location" => $offer->getLocation(),
+                ":deadline" => $offer->getDeadline(),
+                ":user_id" => $offer->getUserId(),
+                ":offer_id" => $offer->getId()
+            ]);
+            $this->updateOfferSkilles($offer);
+            return true;
+        } catch (PDOException $error) {
+            throw new RuntimeException("Database error. Please try again later.");
+        }
     }
 
     public function updateOfferSkilles(Offer $offer)
@@ -129,7 +129,7 @@ class OfferRepository
         }
     }
 
-    public function getOfferBuId(Offer $offer)
+    public function getOfferById(Offer $offer)
     {
         try {
             $query = '
@@ -149,7 +149,6 @@ class OfferRepository
                     LEFT JOIN tags t ON ot.tag_id = t.id
                     WHERE o.id = :offer_id AND o.user_id = :user_id
                 ';
-            // GROUP_CONCAT(t.name SEPARATOR ",") as tags
             $stmt = $this->conn->prepare($query);
             $stmt->execute([
                 ":offer_id" => $offer->getId(),
@@ -179,13 +178,44 @@ class OfferRepository
                     GROUP_CONCAT(t.name SEPARATOR ",") as tags
                     FROM offers o
                     LEFT JOIN offer_tag ot ON o.id = ot.offer_id
-                    LEFT JOIN tags t ON ot.tag_id = t.id
-                    GROUP BY o.id;
+                    LEFT JOIN tags t ON ot.tag_id = t.id;
                 ';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $result;
+        } catch (PDOException $error) {
+            throw new RuntimeException("Database error. Please try again later.");
+        }
+    }
+
+    public function getOfferByUserId(Offer $offer)
+    {
+        try {
+            $query = '
+                SELECT 
+                    o.id AS offer_id,
+                    o.title,
+                    o.job_name,
+                    o.salary,
+                    o.location,
+                    o.application_deadline,
+                    o.user_id,
+                    o.id,
+                    t.id AS tag_id,
+                    t.name AS tag_name
+                    FROM offers o
+                    LEFT JOIN offer_tag ot ON o.id = ot.offer_id
+                    LEFT JOIN tags t ON ot.tag_id = t.id
+                    WHERE o.user_id = :user_id;
+                ';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ":user_id" => $offer->getUserId()
+            ]);
+
+            $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $rows;
         } catch (PDOException $error) {
             throw new RuntimeException("Database error. Please try again later.");
         }

@@ -9,7 +9,7 @@ use PDOException;
 
 class AdminController
 {
-   
+
     public function checkAndCreatCategory()
     {
         try {
@@ -23,19 +23,17 @@ class AdminController
         }
     }
 
-      public function checkAndCreatTags()
+    public function checkAndCreatTags()
     {
         try {
             if (!empty($_POST['categoryName'])) {
                 $TagName = $_POST['TagName'];
-                $category_id=$_POST["categoryId"];
+                $category_id = $_POST["categoryId"];
                 $TagsServices = new TagsServices();
-                $TagsServices->CreatTags($TagName,$category_id);
+                $TagsServices->CreatTags($TagName, $category_id);
             }
         } catch (PDOException $e) {
             echo "Failed to check category: " . $e->getMessage();
         }
     }
-
-
 }

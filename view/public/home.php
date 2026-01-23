@@ -64,17 +64,9 @@ session_start();
     </div>
 </section>
 
-<!-- Dernières Offres -->
-
-
-<!-- Categories -->
-
-
-<!-- Footer -->
 <footer>
     © 2026 CareerLink — Plateforme de recrutement moderne
 </footer>
->>>>>>> 98d8c5947ccf616397906072ebc9e27693730fed
 
 </body>
 </html>

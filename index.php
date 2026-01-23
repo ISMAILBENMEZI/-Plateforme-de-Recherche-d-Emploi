@@ -2,6 +2,8 @@
 require_once "vendor/autoload.php";
 use App\Controller\AdminController;
 use App\Core\Router;
+use App\Core\Session;
+Session::start();
 
 
 $router = new Router();
