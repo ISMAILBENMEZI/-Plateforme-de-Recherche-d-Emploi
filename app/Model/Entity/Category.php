@@ -5,17 +5,16 @@ class Category {
     private $id;
     private $name;
 
-    public function __construct($name, $id = null){
+    public function __construct($name){
         $this->name = $name;
-        $this->id = $id;
     }
 
     public function setId($id){
-        $this->id = $id;
+        $this->id=$id;
     }
 
     public function setName($name){
-        $this->name = $name;
+        $this->name=$name;
     }
 
     public function __get($property){

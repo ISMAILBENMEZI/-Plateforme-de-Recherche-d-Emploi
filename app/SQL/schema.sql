@@ -79,7 +79,6 @@ CREATE TABLE
         FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
 
-<<<<<<< HEAD
 
 INSERT INTO offers (id, title, job_name, salary, location, application_deadline, user_id) VALUES
 (1, 'Backend Developer', 'PHP Developer', 8000, 'Casablanca', '2026-02-01', 1),
@@ -104,5 +103,3 @@ INSERT INTO offer_tag (offer_id, tag_id) VALUES
 (2, 5),
 
 (3, 6);
-=======
->>>>>>> adad131347f4732407dd211a70336736ef71f7b9
