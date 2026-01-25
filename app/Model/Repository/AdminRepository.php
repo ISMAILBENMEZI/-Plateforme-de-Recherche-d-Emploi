@@ -41,7 +41,7 @@ class AdminRepository
 
             $Categorys = [];
             foreach ($result as $obj) {
-                $Cate = new Category($obj->name);
+                  $Cate = new Category($obj->name);
                 $Cate->setId($obj->id);
                 array_push($Categorys, $Cate);
             }
@@ -70,40 +70,27 @@ class AdminRepository
         }
     }
 
-      public function displayAllTags()
-    {
-        try {
-            $query = "SELECT * FROM tags where category_id=:category_id";
+    public function displayAllTags($categoryId)
+{
+    try {
+       
+            $query = "SELECT * FROM tags WHERE category_id = :category_id";
             $stmt = $this->connection->prepare($query);
-            $stmt->bindParam(":category_id",$_POST["categoryId"]);
+            $stmt->bindParam(":category_id", $categoryId, PDO::PARAM_INT);    
             $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-            $Tags = [];
-            foreach ($result as $obj) {
-                $tag =new Tags($obj->name,$obj->categoryId);
-                $tag->setId($obj->id);
-                array_push($Tags, $tag);
-            }
-
-            return $Tags;
+        $Tags = [];
+        foreach ($result as $obj) {
+            $tag = new Tags($obj->name, $obj->category_id);
+            $tag->setId($obj->id);
+            array_push($Tags, $tag);
         }
-        catch(PDOException $e){
-            echo "Failed to display".$e->getMessage();
-        }
+
+        return $Tags;
+    } catch(PDOException $e) {
+        echo "Failed to display: " . $e->getMessage();
+        return [];
     }
-
-    public function DeletCategory($id){
-        try{
-        $query='DELETE FROM categories WHERE id=:id';
-        $stmt=$this->connection->prepare($query);
-        $stmt->bindParam(":id",$id);
-        $stmt->execute();
-        }
-        catch(PDOException $e){
-            echo "Failed to delete".$e->getMessage();
-        }
-    }
-
+}
 }

@@ -10,20 +10,16 @@ class Category implements JsonSerializable
     private $name;
     private $tags = [];
 
-    public function __construct($name, $id = null)
-    {
+    public function __construct($name){
         $this->name = $name;
-        $this->id = $id;
     }
 
-    public function setId($id)
-    {
-        $this->id = $id;
+    public function setId($id){
+        $this->id=$id;
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
+    public function setName($name){
+        $this->name=$name;
     }
 
     public function __get($property)
