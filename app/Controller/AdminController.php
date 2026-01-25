@@ -10,8 +10,8 @@ use PDOException;
 
 class AdminController
 {
-    private $AdminServices;
-    public function __construct()
+
+    public function checkAndCreatCategory()
     {
         $this->AdminServices = new AdminServices();
     }

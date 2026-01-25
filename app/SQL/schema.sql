@@ -25,14 +25,14 @@ CREATE TABLE
         FOREIGN KEY (role_id) REFERENCES roles (id)
     );
 
-
-CREATE TABLE user_skills (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    skill_id INT,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (skill_id) REFERENCES skills(id)
-);
+CREATE TABLE
+    user_skills (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        skill_id INT,
+        user_id INT,
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (skill_id) REFERENCES skills (id)
+    );
 
 CREATE TABLE
     categories (
@@ -40,35 +40,37 @@ CREATE TABLE
         name VARCHAR(200)
     );
 
-CREATE TABLE skills (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50),
-    category_id INT,
-    FOREIGN KEY (category_id) REFERENCES categories (id)
-);
+CREATE TABLE
+    skills (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(50),
+        category_id INT,
+        FOREIGN KEY (category_id) REFERENCES categories (id)
+    );
 
-CREATE TABLE offers (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
-    salary VARCHAR(50),
-    location VARCHAR(100),
-    description VARCHAR(255),
-    user_id INT,
-    category_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (category_id) REFERENCES categories(id)
-);
+CREATE TABLE
+    offers (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(255),
+        salary VARCHAR(50),
+        location VARCHAR(100),
+        description VARCHAR(255),
+        user_id INT,
+        category_id INT,
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (category_id) REFERENCES categories (id)
+    );
 
-CREATE TABLE postule (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    letter VARCHAR(255),
-    document MEDIUMBLOB NOT NULL,
-    user_id INT,
-    offer_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (offer_id) REFERENCES offers (id)
-);
-
+CREATE TABLE
+    postule (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        letter VARCHAR(255),
+        document MEDIUMBLOB NOT NULL,
+        user_id INT,
+        offer_id INT,
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (offer_id) REFERENCES offers (id)
+    );
 
 CREATE TABLE
     offer_tag (
@@ -103,3 +105,18 @@ INSERT INTO offer_tag (offer_id, tag_id) VALUES
 (2, 5),
 
 (3, 6);
+SELECT
+    o.id AS offer_id,
+    o.title,
+    o.job_name,
+    o.salary,
+    o.location,
+    o.user_id,
+    o.application_deadline,
+    t.id AS tag_id,
+    t.name AS tag_name
+    -- GROUP_CONCAT (t.name SEPARATOR ",") as tags
+FROM
+    offers o
+    LEFT JOIN offer_tag ot ON o.id = ot.offer_id
+    LEFT JOIN tags t ON ot.tag_id = t.id;

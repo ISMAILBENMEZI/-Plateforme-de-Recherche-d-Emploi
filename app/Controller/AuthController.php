@@ -37,7 +37,7 @@ class AuthController
                             require __DIR__ . '/../../view/public/recruteur.php';
                             break;
                         case 'Admin':
-                            require __DIR__ . '/../../view/public/recruteur.php';
+                            header("location: offer");
                             break;
 
                         default:

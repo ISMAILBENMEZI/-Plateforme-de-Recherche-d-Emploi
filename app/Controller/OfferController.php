@@ -6,6 +6,9 @@ use App\Services;
 use App\Services\OfferServices;
 use App\Model\Entity\Offer;
 
+use App\Core\Session;
+Session::start();
+
 class OfferController
 {
     private OfferServices $offerServices;
@@ -17,14 +20,9 @@ class OfferController
 
     public function recruteur()
     {
+        $offers = $this->getOfferByUserId();
         require 'view/public/recruteur.php';
     }
-
-    public function createNewOffer()
-    {
-        require 'view/public/addOffer.php';
-    }
-
     public function goToUpdateOffer()
     {
         $offer = $this->getOfferBuId();
@@ -33,7 +31,16 @@ class OfferController
 
     public function addOffer()
     {
+        $offer = $offer ?? null;
+        $offers = $this->getOfferByUserId();
         require 'view/public/addOffer.php';
+    }
+
+    public function offer()
+    {
+        $sessionOffer = Session::get('User_role')->getName();
+        $offers = $this->getAllOffer();
+        require 'view/public/offers.php';
     }
 
     public function creatOffer()
@@ -82,9 +89,27 @@ class OfferController
         return $this->offerServices->getAllOffer();
     }
 
+    public function getOfferByUserId()
+    {
+        $user_id = Session::get('user_id');
+
+        $offer = new offer(
+            title: null,
+            job_name: null,
+            salary: null,
+            location: null,
+            deadline: null,
+            user_id: $user_id,
+            skills: null,
+            id: null
+        );
+
+        return $this->offerServices->getOfferByUserId($offer);
+    }
+
+
     public function getOfferBuId()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user_id = $_POST['user_id'];
             $offer_id = $_POST['offer_id'];
@@ -100,9 +125,9 @@ class OfferController
                 salary: null,
                 location: null,
                 deadline: null,
-                user_id: 1,
+                user_id: $user_id,
                 skills: null,
-                id: 1
+                id: $offer_id
             );
 
             return $this->offerServices->getOfferBuId($offer);
@@ -123,7 +148,7 @@ class OfferController
 
             $skills = array_unique($skills);
 
-            if (empty($title) || empty($job_name) || empty($salary) || empty($location) || empty($deadline)  || empty($user_id) || empty($skills)||empty($offer_id)||empty($user_id) || !is_array($skills)) {
+            if (empty($title) || empty($job_name) || empty($salary) || empty($location) || empty($deadline)  || empty($user_id) || empty($skills) || empty($offer_id) || empty($user_id) || !is_array($skills)) {
                 $_SESSION['erorr'] = "Please fill in all fields.";
                 var_dump($_POST);
                 exit;
@@ -138,7 +163,7 @@ class OfferController
                 deadline: $deadline,
                 user_id: $user_id,
                 skills: $skills,
-                id:$offer_id
+                id: $offer_id
             );
 
             $result = $this->offerServices->updateOffer($offer);
@@ -154,7 +179,6 @@ class OfferController
 
     public function deleteOffer()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user_id = $_POST['user_id'];
             $offer_id = $_POST['offer_id'];
@@ -184,5 +208,14 @@ class OfferController
                 require 'view/public/addOffer.php';
             }
         }
+    }
+
+    public function getAllCategoriesWithTags()
+    {
+        header('Content-Type: application/json');
+        echo json_encode(
+            $this->offerServices->getAllCategoriesWithTags()
+        );
+        exit;
     }
 }
