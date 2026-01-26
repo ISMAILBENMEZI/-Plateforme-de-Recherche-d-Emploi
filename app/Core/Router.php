@@ -32,6 +32,7 @@ class Router
             $action = $this->routes[$url];
             $controllerName = "App\Controller\\" . $action[0];
             $method = $action[1];
+           
             if (!class_exists($controllerName)) {
                 die('Controller not found');
             }

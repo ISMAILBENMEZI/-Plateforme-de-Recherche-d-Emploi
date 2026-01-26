@@ -13,6 +13,7 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         ),
         'M' =>
         array (
+            'Model\\Entity\\' => 13,
             'Model\\' => 6,
         ),
         'A' =>
@@ -25,6 +26,10 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         'Services\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app/Services',
+        ),
+        'Model\\Entity\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app/Model/Entity',
         ),
         'Model\\' =>
         array (

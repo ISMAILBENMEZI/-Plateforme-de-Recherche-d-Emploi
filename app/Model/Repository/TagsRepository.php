@@ -41,7 +41,7 @@ class TagsRepository
 
             $Tags = [];
             foreach ($result as $obj) {
-                $tag =new Tags();
+                $tag =new Tags($obj->name,$obj->categoryId);
                 $tag->setId($obj->id);
                 array_push($Tags, $tag);
             }

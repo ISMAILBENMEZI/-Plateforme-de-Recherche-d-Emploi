@@ -3,7 +3,7 @@
 namespace App\Controller;
 use App\Core\Session;
 use Services\AuthServices;
-use Model\Entity\User;
+use App\Model\Entity\User;
 use Model\Entity\Role;
 
 class AuthController
@@ -37,7 +37,7 @@ class AuthController
                             require __DIR__ . '/../../view/public/recruteur.php';
                             break;
                         case 'Admin':
-                            require __DIR__ . '/../../view/public/recruteur.php';
+                            header("location: offer");
                             break;
 
                         default:
