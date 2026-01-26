@@ -1,6 +1,8 @@
 <?php
 require_once "vendor/autoload.php";
 use App\Core\Router;
+use App\Core\Session;
+Session::start();
 
 
 $router = new Router();
@@ -11,10 +13,13 @@ $router->addPath('addOffer',['OfferController','addOffer']);
 $router->addPath('goToUpdateOffer',['OfferController','goToUpdateOffer']);
 
 $router->addPath('categories', ['AdminController', 'displayCategories']);
+$router->addPath('api',['OfferController','getAllCategoriesWithTags']);
+$router->addPath('offer',['OfferController' , 'offer']);
+$router->addPath('categories', ['AdminController', 'displayCategories']);
 $router->addPath('addCategorie', ['AdminController', 'checkAndCreatCategory']);
 $router->addPath('Tags', ['AdminController', 'displayTags']);
 $router->addPath('addTags', ['AdminController', 'checkAndCreatTags']);
-
+$router->addPath('Postuler' , ['CandidatController','Postuler']);
 
 
 

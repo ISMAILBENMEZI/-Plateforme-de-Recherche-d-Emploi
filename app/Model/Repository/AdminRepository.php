@@ -93,4 +93,20 @@ class AdminRepository
         return [];
     }
 }
+    public function ModifyCategory($name,$id){
+       try{
+        $query="UPDATE categories SET name=:name WHERE id=:id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(":name",$name);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
+        }
+        catch(PDOException $e){
+            echo"Failed to modify".$e->getMessage();
+
+        }
+
+
+
+    }
 }

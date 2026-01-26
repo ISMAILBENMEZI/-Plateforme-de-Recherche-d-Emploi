@@ -17,7 +17,6 @@ class AdminServices
         try {
 
             $Category = new Category($CategoryName);
-            $Category->setId();
             $this->AdminRepository->AddCategory($Category);
         } catch (PDOException $e) {
             echo "failed to creat a category" . $e->getMessage();
@@ -45,4 +44,14 @@ class AdminServices
     $Tags = $this->AdminRepository->displayAllTags($categoryId);
     return $Tags;
 }
+
+public function ModifyCategoryName($name,$id){
+  
+        try {
+            $this->AdminRepository->ModifyCategory($name,$id);
+        } catch (PDOException $e) {
+            echo "failed to Modify a category" . $e->getMessage();
+        }
+    }
+
 }
