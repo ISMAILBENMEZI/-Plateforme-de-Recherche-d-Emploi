@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Services\AdminServices;
-
+use App\Core\Session;
+Session::start();
 
 use PDOException;
 
@@ -13,33 +14,64 @@ class AdminController
     
 
     public function checkAndCreatCategory()
-    { 
+    {
         try {
             require __DIR__ . '/../../view/public/addcategorie.php';
             if (isset($_POST['submit-categoryName'])) {
                 $categoryName = $_POST['categoryName'];
-                $categoryServices = new AdminServices();
-                $categoryServices->CreatCategory($categoryName);    
-                             
+
+                $this->AdminServices->CreatCategory($categoryName);
+                header("location: categories");
+                exit;
             }
+
         } catch (PDOException $e) {
             echo "Failed to check category: " . $e->getMessage();
         }
     }
 
+    public function displayCategories()
+    {
+        $categories = $this->AdminServices->getAllCategory();
+        require __DIR__ . '/../../view/public/categories.php';
+    }
+
     public function checkAndCreatTags()
     {
-      
         try {
-         require __DIR__. '/../../view/public/addTags.php';
+            // Get categoryId from GET or POST
+            $categoryId = $_GET['categoryId'] ?? $_POST['categoryId'] ?? null;
+            
+            require __DIR__ . '/../../view/public/addTags.php';
+            
             if (isset($_POST['submit-TagName'])) {
                 $TagName = $_POST['TagName'];
                 $category_id = $_POST["categoryId"];
                 $TagsServices = new AdminServices();
                 $TagsServices->CreatTags($TagName, $category_id);
             }
+
         } catch (PDOException $e) {
-            echo "Failed to check category: " . $e->getMessage();
+            echo "Failed to add tag: " . $e->getMessage();
         }
+    }
+    
+    public function displayTags()
+    {
+        // Get categoryId from POST or GET
+        $categoryId = $_POST['categoryId'] ?? $_GET['categoryId'] ?? null;
+        
+        // Debug: uncomment these lines to see what's happening
+        // echo "Category ID: " . $categoryId . "<br>";
+        // var_dump($_POST);
+        // var_dump($_GET);
+        
+        if ($categoryId === null) {
+            echo "Error: No category selected";
+            return;
+        }
+        
+        $Tags = $this->AdminServices->getAllTags($categoryId);
+        require __DIR__ . '/../../view/public/Tags.php';
     }
 }

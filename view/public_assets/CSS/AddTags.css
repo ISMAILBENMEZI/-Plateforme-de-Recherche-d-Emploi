@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Dark Input Page</title>
-<style>
     * {
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
@@ -40,7 +34,7 @@
         color: #aab0c0;
     }
 
-    input, textarea {
+    input, select {
         width: 100%;
         padding: 12px;
         margin-bottom: 15px;
@@ -52,18 +46,17 @@
         transition: border 0.2s, box-shadow 0.2s;
     }
 
-    input::placeholder,
-    textarea::placeholder {
+    input::placeholder {
         color: #6b7280;
     }
 
     input:focus,
-    textarea:focus {
+    select:focus {
         border-color: #4f46e5;
         box-shadow: 0 0 0 2px rgba(79,70,229,0.3);
     }
 
-   #button-sbt {
+    #button-sbt {
         width: 100%;
         padding: 12px;
         border: none;
@@ -78,20 +71,23 @@
     #button-sbt:hover {
         background: #4338ca;
     }
-</style>
-</head>
-<body>
 
-<div class="card">
-    
+    select option {
+        background: #181b22;
+        color: #e5e7eb;
+    }
 
-    <form action="addCategorie" method="POST">
-    <label for="name">Name of category</label>
-    <input type="text" id="name" name="categoryName" placeholder="Enter your name">
+    .back-link {
+        text-align: center;
+        margin-top: 15px;
+    }
 
-    <input type="submit" value="Submit" id="button-sbt" name="submit-categoryName">
-    </form>
-</div>
+    .back-link a {
+        color: #4f46e5;
+        text-decoration: none;
+        font-size: 14px;
+    }
 
-</body>
-</html>
+    .back-link a:hover {
+        text-decoration: underline;
+    }

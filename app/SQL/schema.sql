@@ -25,14 +25,14 @@ CREATE TABLE
         FOREIGN KEY (role_id) REFERENCES roles (id)
     );
 
-
-CREATE TABLE user_skills (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    skill_id INT,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (skill_id) REFERENCES skills(id)
-);
+CREATE TABLE
+    user_skills (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        skill_id INT,
+        user_id INT,
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (skill_id) REFERENCES skills (id)
+    );
 
 CREATE TABLE
     categories (

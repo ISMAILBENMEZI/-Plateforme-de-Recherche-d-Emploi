@@ -172,14 +172,15 @@ class OfferRepository
                     o.job_name,
                     o.salary,
                     o.location,
+                    o.user_id,
                     o.application_deadline,
                     t.id AS tag_id,
-                    t.name AS tag_name,
-                    GROUP_CONCAT(t.name SEPARATOR ",") as tags
+                    t.name AS tag_name
                     FROM offers o
                     LEFT JOIN offer_tag ot ON o.id = ot.offer_id
                     LEFT JOIN tags t ON ot.tag_id = t.id;
                 ';
+                // GROUP_CONCAT(t.name SEPARATOR ",") as tags
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -219,5 +220,24 @@ class OfferRepository
         } catch (PDOException $error) {
             throw new RuntimeException("Database error. Please try again later.");
         }
+    }
+
+    public function getAllCategoriesWithTags()
+    {
+        $query = '
+        SELECT 
+            c.id   AS category_id,
+            c.name AS category_name,
+            t.id   AS tag_id,
+            t.name AS tag_name
+        FROM categories c
+        LEFT JOIN tags t ON t.category_id = c.id
+        ORDER BY c.id
+        ';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
