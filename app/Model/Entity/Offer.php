@@ -67,6 +67,7 @@ class Offer
         return $this->id;
     }
 
+
     public function setId($id)
     {
        $this->id = $id;
@@ -78,5 +79,6 @@ class Offer
             'id' => $id,
             'name' => $name
         ];
+
     }
 }

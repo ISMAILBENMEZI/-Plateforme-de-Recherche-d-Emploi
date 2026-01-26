@@ -11,10 +11,7 @@ use PDOException;
 class AdminController
 {
 
-    public function checkAndCreatCategory()
-    {
-        $this->AdminServices = new AdminServices();
-    }
+    
 
     public function checkAndCreatCategory()
     {
@@ -49,16 +46,9 @@ class AdminController
             
             if (isset($_POST['submit-TagName'])) {
                 $TagName = $_POST['TagName'];
-                $category_id = $_POST["categoryId"] ?? null;
-                
-                if ($category_id === null) {
-                    echo "Error: Please select a category";
-                    return;
-                }
-                
-                $this->AdminServices->CreatTags($TagName, $category_id);
-                header("location: categories");
-                exit;
+                $category_id = $_POST["categoryId"];
+                $TagsServices = new AdminServices();
+                $TagsServices->CreatTags($TagName, $category_id);
             }
 
         } catch (PDOException $e) {

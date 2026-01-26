@@ -77,6 +77,12 @@
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <div class="job-footer">
+                            <span class="salary"> DH</span>
+                            <div class="job-actions">
+                                <a href="candidat" class="btn-primary"> Voir les candidats</a>
+                            </div>
+                        </div>
         </div>
     </section>
 

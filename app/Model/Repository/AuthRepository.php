@@ -2,7 +2,7 @@
 
 namespace Model\Repository;
 
-use Model\Entity\User;
+use App\Model\Entity\User;
 use Model\Entity\Role;
 use \PDO;
 use \PDOException;

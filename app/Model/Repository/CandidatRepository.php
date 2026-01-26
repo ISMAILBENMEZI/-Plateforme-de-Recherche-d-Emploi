@@ -10,6 +10,9 @@ class CandidtRepository
         $this->connection = Database::getInstance()->getConnection();
     }
 
+    public function getCondidat(){
+
+    }
     public function getAll()
     {
         $query = "SELECT * FROM categories";
