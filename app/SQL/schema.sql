@@ -68,8 +68,27 @@ CREATE TABLE postule (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (offer_id) REFERENCES offers (id)
 );
-
-
+alter table postule add COLUMN status ENUM('accepter','refuser','active')  DEFAULT 'active';
+SELECT 
+   u.id as user_id,
+   u.name,
+   u.email,
+   p.id as pustule_id,
+   p.document,
+   p.letter,
+   p.status,
+   o.id as offer_id,
+   o.application_deadline,
+   o.job_name,
+   o.location,
+   o.title,
+   o.salary
+FROM users u
+JOIN postule p ON u.id = p.user_id
+JOIN offers o ON p.offer_id = o.id
+WHERE u.id =7
+  AND p.status = 'active'
+;
 CREATE TABLE
     offer_tag (
         offer_id INT NOT NULL,
@@ -102,8 +121,7 @@ VALUES (
 
 
 
-SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id 
-
+SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id where u.id=7;
 INSERT INTO offers (id, title, job_name, salary, location, application_deadline, user_id) VALUES
 (1, 'Backend Developer', 'PHP Developer', 8000, 'Casablanca', '2026-02-01', 1),
 (2, 'Frontend Developer', 'JS Developer', 7000, 'Rabat', '2026-02-10', 2),

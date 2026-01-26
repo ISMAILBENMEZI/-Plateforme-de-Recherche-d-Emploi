@@ -1,10 +1,15 @@
 <?php
+
 namespace App\Model\Repository;
 
 use App\Core\Database;
+use App\Core\Session;
 use App\Model\Entity\Postule;
 use App\Model\Entity\User;
 use App\Model\Entity\Offer;
+
+Session::start();
+
 use PDOException;
 use PDO;
 
@@ -29,35 +34,53 @@ class PostuleRepository
 
     // }
 
-  
+
     public function displayAllPostule()
     {
         try {
-            $query = "SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id";
+            $query = "SELECT 
+   u.id as user_id,
+   u.name,
+   u.email,
+   u.password,
+   p.id as pustule_id,
+   p.document,
+   p.letter,
+   p.status,
+   o.id as offer_id,
+   o.application_deadline,
+   o.job_name,
+   o.location,
+   o.title,
+   o.salary
+FROM users u
+JOIN postule p ON u.id = p.user_id
+JOIN offers o ON p.offer_id = o.id
+WHERE u.id =:id
+  AND p.status = 'active'
+";
             $stmt = $this->connection->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_OBJ); 
+            $stmt->execute([
+                ':id' => Session::get('User_id')
+            ]);
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             $postules = [];
             foreach ($result as $obj) {
-                $user=new User($obj->email,$obj->password);
+                $user = new User($obj->email, $obj->password);
                 $user->setName($obj->name);
                 $user->setId($obj->user_id);
-                $offer=new Offer($obj->title,$obj->job_name,$obj->salary,$obj->location,$obj->application_deadline,$obj->user_id,$obj->skills=null);
+                $offer = new Offer($obj->title, $obj->job_name, $obj->salary, $obj->location, $obj->application_deadline, $obj->user_id, $obj->skills = null);
                 $offer->setId($obj->offer_id);
-                $postule = new Postule($obj->letter,$obj->document);
-                $postule->setId($obj->id);
+                $postule = new Postule($obj->letter, $obj->document);
+                $postule->setId($obj->pustule_id);
                 $postule->setUsert($user);
                 $postule->setOffer($offer);
                 array_push($postules, $postule);
             }
-
             return $postules;
-        }
-        catch(PDOException $e){
-            echo "Failed to display".$e->getMessage();
+        } catch (PDOException $e) {
+            echo "Failed to display" . $e->getMessage();
         }
     }
-
 }
-$rep=new PostuleRepository();
-$rep->displayAllPostule();
+
