@@ -40,38 +40,55 @@ CREATE TABLE
         name VARCHAR(200)
     );
 
-CREATE TABLE
-    skills (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(50),
-        category_id INT,
-        FOREIGN KEY (category_id) REFERENCES categories (id)
-    );
+CREATE TABLE skills (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories (id)
+);
 
-CREATE TABLE
-    offers (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(255),
-        salary VARCHAR(50),
-        location VARCHAR(100),
-        description VARCHAR(255),
-        user_id INT,
-        category_id INT,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (category_id) REFERENCES categories (id)
-    );
+CREATE TABLE offers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    salary VARCHAR(50),
+    location VARCHAR(100),
+    description VARCHAR(255),
+    user_id INT,
+    category_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
 
-CREATE TABLE
-    postule (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        letter VARCHAR(255),
-        document MEDIUMBLOB NOT NULL,
-        user_id INT,
-        offer_id INT,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (offer_id) REFERENCES offers (id)
-    );
-
+CREATE TABLE postule (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    letter VARCHAR(255),
+    document MEDIUMBLOB NOT NULL,
+    user_id INT,
+    offer_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (offer_id) REFERENCES offers (id)
+);
+alter table postule add COLUMN status ENUM('accepter','refuser','active')  DEFAULT 'active';
+SELECT 
+   u.id as user_id,
+   u.name,
+   u.email,
+   p.id as pustule_id,
+   p.document,
+   p.letter,
+   p.status,
+   o.id as offer_id,
+   o.application_deadline,
+   o.job_name,
+   o.location,
+   o.title,
+   o.salary
+FROM users u
+JOIN postule p ON u.id = p.user_id
+JOIN offers o ON p.offer_id = o.id
+WHERE u.id =7
+  AND p.status = 'active'
+;
 CREATE TABLE
     offer_tag (
         offer_id INT NOT NULL,
@@ -80,9 +97,31 @@ CREATE TABLE
         FOREIGN KEY (offer_id) REFERENCES offers (id) ON DELETE CASCADE,
         FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    NULL,
+    'cv_youssef.pdf',
+    5,
+    3
+);
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    'Merci de considérer ma candidature.',
+    'cv_sara.pdf',
+    4,
+    2
+);
+INSERT INTO postule (letter, document, user_id, offer_id)
+VALUES (
+    'Je suis très motivé pour ce poste.',
+    'cv_ahmed.pdf',
+    3,
+    1
+);
 
 
 
+SELECT * FROM users u join postule p on u.id=p.user_id join offers o on p.offer_id=o.id where u.id=7;
 INSERT INTO offers (id, title, job_name, salary, location, application_deadline, user_id) VALUES
 (1, 'Backend Developer', 'PHP Developer', 8000, 'Casablanca', '2026-02-01', 1),
 (2, 'Frontend Developer', 'JS Developer', 7000, 'Rabat', '2026-02-10', 2),
@@ -106,20 +145,4 @@ INSERT INTO offer_tag (offer_id, tag_id) VALUES
 (2, 5),
 
 (3, 6);
-=======
-SELECT
-    o.id AS offer_id,
-    o.title,
-    o.job_name,
-    o.salary,
-    o.location,
-    o.user_id,
-    o.application_deadline,
-    t.id AS tag_id,
-    t.name AS tag_name
-    -- GROUP_CONCAT (t.name SEPARATOR ",") as tags
-FROM
-    offers o
-    LEFT JOIN offer_tag ot ON o.id = ot.offer_id
-    LEFT JOIN tags t ON ot.tag_id = t.id;
->>>>>>> 925a2a535b39e0bf35fb4c37a51fcc5d5594d5bd
+

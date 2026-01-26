@@ -66,7 +66,6 @@ class AdminController
             echo "Failed to add tag: " . $e->getMessage();
         }
     }
-
     public function displayTags()
     {
 
@@ -81,7 +80,7 @@ class AdminController
         require __DIR__ . '/../../view/public/Tags.php';
     }
 
-    public function ModifyCategoryController(){
-        
-    }
+    // public function ModifyCategoryController(){
+
+    // }
 }

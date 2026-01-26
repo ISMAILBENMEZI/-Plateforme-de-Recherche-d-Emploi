@@ -589,65 +589,116 @@ color: #10b981;
 .menu-item.update{
   color: white;
 }
-  
-        #card-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+/* ================== CANDIDATES PAGE ================== */
+
+.candidates-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-#btn-edit,
-#btn-delete {
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease;
+.candidate-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, border-color 0.3s;
 }
 
-/* Modify button */
-#btn-edit {
-    background-color: #3498db;
+.candidate-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
 }
 
-#btn-edit:hover {
-    background-color: #2980b9;
+/* Infos candidat */
+
+.candidate-info p {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
 }
 
-/* Delete button */
-#btn-delete {
-    background-color: #e74c3c;
+.candidate-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-primary);
 }
 
-#btn-delete:hover {
-    background-color: #c0392b;
-}
-#btn-view {
-    background-color: #10b981; /* success green */
-    color: white;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: 0.3s ease;
+.candidate-email {
+  color: #93c5fd;
 }
 
-#btn-view:hover {
-    background-color: #059669;
-}
-#btn-Add{
-      background-color: #333333; /* success green */
-    color: white;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: 0.3s ease;
-
-}
-#btn-Add:hover {
-    background-color: #3e4241;
+.candidate-job {
+  color: var(--accent);
+  font-weight: 500;
 }
 
+.candidate-skills {
+  color: #a7f3d0;
+  font-size: 0.9rem;
+}
 
+/* Actions */
+
+.candidate-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.candidate-actions a {
+  text-decoration: none;
+}
+
+.candidate-actions button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.candidate-actions button:hover {
+  transform: translateY(-2px);
+  background: var(--border);
+}
+
+/* Boutons spéciaux */
+
+.btn-accept {
+  background: var(--success);
+  color: white;
+}
+
+.btn-accept:hover {
+  background: #059669;
+}
+
+.btn-refuse {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-refuse:hover {
+  background: #dc2626;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .candidates-list {
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-actions {
+    justify-content: center;
+  }
+}

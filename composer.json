@@ -3,6 +3,7 @@
         "psr-4": {
             "App\\":"app/",
             "Model\\": "app/Model/",
+            "Model\\Entity\\": "app/Model/Entity/",
              "Services\\": "app/Services/"
         }
     }
