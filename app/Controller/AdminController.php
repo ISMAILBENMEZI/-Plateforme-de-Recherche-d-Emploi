@@ -10,8 +10,12 @@ use PDOException;
 
 class AdminController
 {
+    private $AdminServices;
 
-    
+    public function __construct()
+    {
+        $this->AdminServices = new AdminServices();
+    }
 
     public function checkAndCreatCategory()
     {
@@ -39,39 +43,44 @@ class AdminController
     public function checkAndCreatTags()
     {
         try {
-            // Get categoryId from GET or POST
+
             $categoryId = $_GET['categoryId'] ?? $_POST['categoryId'] ?? null;
-            
+
             require __DIR__ . '/../../view/public/addTags.php';
-            
+
             if (isset($_POST['submit-TagName'])) {
                 $TagName = $_POST['TagName'];
-                $category_id = $_POST["categoryId"];
-                $TagsServices = new AdminServices();
-                $TagsServices->CreatTags($TagName, $category_id);
+                $category_id = $_POST["categoryId"] ?? null;
+
+                if ($category_id === null) {
+                    echo "Error: Please select a category";
+                    return;
+                }
+
+                $this->AdminServices->CreatTags($TagName, $category_id);
+                header("location: categories");
+                exit;
             }
 
         } catch (PDOException $e) {
             echo "Failed to add tag: " . $e->getMessage();
         }
     }
-    
     public function displayTags()
     {
-        // Get categoryId from POST or GET
+
         $categoryId = $_POST['categoryId'] ?? $_GET['categoryId'] ?? null;
-        
-        // Debug: uncomment these lines to see what's happening
-        // echo "Category ID: " . $categoryId . "<br>";
-        // var_dump($_POST);
-        // var_dump($_GET);
-        
+
         if ($categoryId === null) {
             echo "Error: No category selected";
             return;
         }
-        
+
         $Tags = $this->AdminServices->getAllTags($categoryId);
         require __DIR__ . '/../../view/public/Tags.php';
     }
+
+    // public function ModifyCategoryController(){
+
+    // }
 }

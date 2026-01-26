@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Add Tag</title>
-<link rel="stylesheet" href="view/public_assets/CSS/AddTags.cdd">
+<link rel="stylesheet" href="view/public_assets/CSS/AddTags.css">
 </head>
 <body>
 
